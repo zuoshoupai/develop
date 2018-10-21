@@ -14,9 +14,9 @@
 4. 生成好的文件放在 demoCode目录
 
 ### 三. **空格间隔插件(jquery_spaceme.js)**
-作用：文本输入框按下空格或,则输入内空自动显示成区块，增加用户体验
-依赖：jquery
-使用：按下空格或,自动间隔，取值格式为 string,string,string,后期版本可自定义
+作用：文本输入框按下空格或,则输入内空自动显示成区块，增加用户体验<br>
+依赖：jquery<br>
+使用：按下空格或,自动间隔，取值格式为 string,string,string,后期版本可自定义<br>
 示意代码：
 ```javascript
 <script>
