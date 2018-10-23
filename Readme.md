@@ -15,13 +15,31 @@
 
 ### 三. **空格间隔插件(jquery_spaceme.js)**
 作用：文本输入框按下空格或,则输入内空自动显示成区块，增加用户体验<br>
-依赖：jquery<br>
+依赖：jquery 1.7以上版本<br>，
 使用：按下空格或,自动间隔，取值格式为 string,string,string,后期版本可自定义<br>
+
 示意代码：
+```css
+<style>
+.zane-spaceme{position: relative}
+.zane-spaceme-choices{overflow:hidden;list-style:none;z-index: 10;padding: 0}
+.zane-spaceme-choices .search-choice{float:left;position:relative;position: relative;padding: 2px 16px;margin-right: 10px;background-color:#009688;color: #fff;margin-bottom: 10px;    border-radius: 10px;}
+.zane-spaceme-choices .search-choice-close{position: absolute;color: #f13d3d;top: -6px;right: 0px;font-weight: bold}
+.zane-spaceme-choices .search-field{float:left}
+.zane-spaceme-choices .search-field input {width: 70px;margin-bottom: 10px;}
+.normal .search-choice{background-color:#1E9FFF;color: #fff;}
+.warm .search-choice{background-color:#FFB800;color: #fff;}
+.danger .search-choice{background-color:#FF5722;color: #fff;}
+.danger .zane-spaceme-choices .search-choice-close{color: #666;} 
+</style>
+```
 ```javascript
 <script>
 $(function(){  
-    $("form input[name=tags]").spaceme();
+    $("form input[name=tags]").spaceme({
+		id:'spaceme', //添加唯一标识方便重写样式，可空
+		skin:'warm' // 默认留空，可选 'normal','warm','danger'
+	});
 })
 </script>
 ```
