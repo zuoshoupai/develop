@@ -19,7 +19,6 @@ if(!isset($_POST['scene'])){
 	}
 	die;
 }
-
 function create_css($scene,$compress){
 	//$compress=false;//是否压缩
 //$scene = 'pc';
@@ -102,12 +101,17 @@ img{max-width: 100%;max-height: 100%;}$trans
 .width75{width:75%}$trans
 .width100{width:100%}$trans
 .height100{height: 100%;}$trans
-.line-height{line-height: 75%;}$trans
-.line-height{line-height: 100%;}$trans
-.page{max-width: 750px;min-width:320px;margin: 0 auto;}$trans
+.line-height75{line-height: 75%;}$trans
+.line-height100{line-height: 100%;}$trans
 .lights:hover{color:#666;}$trans
-	
+
 ET;
+if($scene=='web'){
+echo <<<ET
+.page{max-width: 750px;min-width:320px;margin: 0 auto;}$trans
+
+ET;
+}
 if($scene=='pc'){
 echo <<<ET
 @media(min-width:1200px){ $trans
@@ -226,7 +230,7 @@ echo <<<EOD
 .flex-end{justify-content:flex-end}$trans
 .flex-cente{justify-content:center}$trans
 .flex-space-between{justify-content: space-between}$trans
-.flex-space-around{space-around;}$trans
+.flex-space-around{justify-content: space-around;}$trans
 .flex-align-center{align-items:center;}$trans
 .flex-wrap{flex-wrap: wrap;}$trans
 $trans/* 拓展设置  需要自定义*/$trans
@@ -239,7 +243,6 @@ $trans/* 拓展设置  需要自定义*/$trans
 .bg-w{background-color:#fff;}$trans
 EOD;
 echo "/*end*/";
-
 }
 ?>
 <!DOCTYPE html>
