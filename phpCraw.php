@@ -369,7 +369,7 @@ if(isset($_POST['url'])){
 	$data['_picture'] = $_POST['picture'];
 	
 	$wrong = false;
-	
+	var_dump($data);
 	foreach($data as $k=>$v){
 		if(preg_match("/[\'.,:;*?~`!@#$%^&+=)(<>{}]|\]|\[|\/|\\\|\"|\|/",$v)){   
 			$wrong=true;
@@ -382,7 +382,8 @@ if(isset($_POST['url'])){
 	if(empty(trim($_POST['url']))){   
 		$wrong=true;
 	} 
-	if(!preg_match('/^((http|ftp|https):\/\/)[\w-_.]+(\/[\w-_]+)*\/?$/',trim($_POST['url']))){
+	if(!preg_match('/^((http|ftp|https):\/\/)[\w-_\/\.%=\?]+(\/[\w-_%=\?]+)*\/?$/',trim($_POST['url']))){
+		echo 888;
 		$wrong=true; 
 	} 
 	if(!$wrong){
