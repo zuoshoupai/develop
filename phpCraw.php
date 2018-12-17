@@ -382,8 +382,7 @@ if(isset($_POST['url'])){
 	if(empty(trim($_POST['url']))){   
 		$wrong=true;
 	} 
-	if(!preg_match('/^((http|ftp|https):\/\/)[\w-_\/\.%=\?]+(\/[\w-_%=\?]+)*\/?$/',trim($_POST['url']))){
-		echo 888;
+	if(!preg_match('/^((http|ftp|https):\/\/)[\w-_\/\.%=\?]+(\/[\w-_%=\?]+)*\/?$/',trim($_POST['url']))){ 
 		$wrong=true; 
 	} 
 	if(!$wrong){
