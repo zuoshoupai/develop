@@ -91,6 +91,14 @@ img{max-width: 100%;max-height: 100%;}
 
 .border-b0{border-bottom:0}
 
+.left0{left:0;}
+
+.right0{right:0;}
+
+.bottom0{bottom:0;}
+
+.top0{top:0;}
+
 .block{display: block}
 
 .inline-block{display: inline-block}
@@ -111,9 +119,17 @@ img{max-width: 100%;max-height: 100%;}
 
 .width100{width:100%}
 
+.height100{height: 100%;}
+
+.line-height75{line-height: 75%;}
+
+.line-height100{line-height: 100%;}
+
 .lights:hover{color:#666;}
 
-	/*枚举部分-字号*/
+.page{max-width: 750px;min-width:320px;margin: 0 auto;}
+
+/*枚举部分-字号*/
 .font5{font-size:0.05rem;}
 .font6{font-size:0.06rem;}
 .font7{font-size:0.07rem;}
@@ -610,9 +626,11 @@ img{max-width: 100%;max-height: 100%;}
 
 .flex-space-between{justify-content: space-between}
 
-.flex-space-around{space-around;}
+.flex-space-around{justify-content: space-around;}
 
 .flex-align-center{align-items:center;}
+
+.flex-wrap{flex-wrap: wrap;}
 
 
 /* 拓展设置  需要自定义*/
