@@ -19,7 +19,6 @@ if(!isset($_POST['scene'])){
 	}
 	die;
 }
-
 function create_css($scene,$compress){
 	//$compress=false;//是否压缩
 //$scene = 'pc';
@@ -87,6 +86,10 @@ img{max-width: 100%;max-height: 100%;}$trans
 .border-l0{border-left:0}$trans
 .border-t0{border-top:0}$trans
 .border-b0{border-bottom:0}$trans
+.left0{left:0;}$trans
+.right0{right:0;}$trans
+.bottom0{bottom:0;}$trans
+.top0{top:0;}$trans
 .block{display: block}$trans
 .inline-block{display: inline-block}$trans
 .index9{z-index:9}$trans
@@ -97,9 +100,18 @@ img{max-width: 100%;max-height: 100%;}$trans
 .width50{width:50%}$trans
 .width75{width:75%}$trans
 .width100{width:100%}$trans
+.height100{height: 100%;}$trans
+.line-height75{line-height: 75%;}$trans
+.line-height100{line-height: 100%;}$trans
 .lights:hover{color:#666;}$trans
-	
+
 ET;
+if($scene=='web'){
+echo <<<ET
+.page{max-width: 750px;min-width:320px;margin: 0 auto;}$trans
+
+ET;
+}
 if($scene=='pc'){
 echo <<<ET
 @media(min-width:1200px){ $trans
@@ -218,8 +230,9 @@ echo <<<EOD
 .flex-end{justify-content:flex-end}$trans
 .flex-cente{justify-content:center}$trans
 .flex-space-between{justify-content: space-between}$trans
-.flex-space-around{space-around;}$trans
+.flex-space-around{justify-content: space-around;}$trans
 .flex-align-center{align-items:center;}$trans
+.flex-wrap{flex-wrap: wrap;}$trans
 $trans/* 拓展设置  需要自定义*/$trans
 .color0{color:#000;}$trans
 .color3{color:#333;}$trans
@@ -230,7 +243,6 @@ $trans/* 拓展设置  需要自定义*/$trans
 .bg-w{background-color:#fff;}$trans
 EOD;
 echo "/*end*/";
-
 }
 ?>
 <!DOCTYPE html>
