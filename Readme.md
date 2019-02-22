@@ -1,6 +1,6 @@
 # 个人开发的实用工具
 ### 一. **仿站工具(phpCraw.php)**
-作用：抓取网站页面的前端代码包括图片，js,css文件，实例代码 [https://api.00iy.com/createCss.php](https://api.00iy.com/phpCraw.php)<br/>
+作用：抓取网站页面的前端代码包括图片，js,css文件，实例代码 [https://api.00iy.com/phpCraw.php](https://api.00iy.com/phpCraw.php)<br/>
 1. 可设置图片，js,css存储目录
 2. 可匹配抓取背景图片，base64编码图片
 3. 可设置是否下载网络图片
