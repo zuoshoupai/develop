@@ -11,11 +11,15 @@ class craw{
 	public $_picture = 'picture';
 	public $_web_down = false;
 	public function __construct($root_url){
-		$this->root_url = $root_url;
-		$fileinfo = pathinfo($root_url);
-		$this->root_path = $fileinfo['dirname']; //网站文件目录
-		
-		$url_info = explode('/',$root_url);
+		$this->root_url = $root_url; 
+		$root_url=trim($root_url,'/');
+		if(substr_count($root_url,'/')>2){
+			$fileinfo = pathinfo($root_url); 
+			$this->root_path = $fileinfo['dirname']; //网站文件目录
+		}else{
+			$this->root_path = $root_url; //网站文件目录
+		} 
+		$url_info = explode('/',$root_url); 
 		if(strpos($url_info[0],'https')!==false){
 			$this->root_http = 'https';
 		}
@@ -23,14 +27,12 @@ class craw{
 		$this->root_dir = time();
 	}
 	public function run(){
-		
 		$data = $this->parseDom($this->root_url); 
 		$this->downloadFile($data['js'],1);
 		//$this->downloadFile($data['css'],2);
 		$this->downloadFile($data['img'],3);  
-		//解析css图片并下截
+		//解析css图片并下截 
 		$this->parseCssFile($data['css']); 
-		
 		$content = $this->parseloadFile($data['js'],1,$data['content']);
 		$content = $this->parseloadFile($data['css'],2,$content);
 		$content = $this->parseloadFile($data['img'],3,$content);
@@ -68,16 +70,19 @@ class craw{
 		//css
 		$rule_css = "/<[\s]*link[^>]+href=[\s]*[\'\"](.*?)\.css/";
 		preg_match_all($rule_css,$data,$result_css); 
-		$css_arr = $result_css[1];
-		
+		$css_arr = $result_css[1]; 
 		//image
 		$rule_image = "/<[\s]*img[^>]+src=[\s]{0,4}[\'\"](.*?)[\'\"]/";
 		preg_match_all($rule_image,$data,$result_image);
-		$img_arr = $this->_filter_array($result_image[1]);  
-		
+		$img_arr = $this->_filter_array($result_image[1]);   
+		//picture
+		$rule_picture = "/[\s]*background(-image)?[\s]*:[\s]*url\([\'\"]?(.*?)[\'\"]?\)/";
+		preg_match_all($rule_picture,$data,$result_picture);
+		$data_images_arr = $this->_filter_array($result_picture[2]); 
+		$img_arr=array_merge($img_arr,$data_images_arr);
 		$datas = array();
 		$datas['js'] = $js_arr;
-		$datas['css'] = $css_arr;
+		$datas['css'] = $css_arr; 
 		$datas['img'] = $img_arr;
 		$datas['content'] = $data;
 		return $datas;
@@ -101,27 +106,25 @@ class craw{
 		if(!is_dir($file_dir)){
 			mkdir($file_dir,0777,true);
 			chmod($file_dir,0777); 
-		}
+		} 
 		foreach($url_arr as $url)
-		{
-			
+		{ 
 			if(strpos($url,'http')!==false){
 				$file_target = $url.$extension_name;
 			}elseif(substr($url,0,2)=='//'){
 				$file_target = $root_http.':'.$url.$extension_name;
 			}elseif(substr($url,0,1)=='/'){
 				$file_target = $host_path.$url.$extension_name;
-			}else{
-				
+			}else{ 
 				$file_target = $root_path.'/'.$url.$extension_name;
 			}
 			$fileinfo = pathinfo($url);
-			$fileName = $fileinfo['basename'];
+			$fileName = $fileinfo['basename']; 
 			$file = $this->_get_contents($file_target); 
 			$rule_images = "/[\s]*background(-image)?[\s]*:[\s]*url\([\'\"]?(.*?)[\'\"]?\)/";
 			preg_match_all($rule_images,$file,$result_images);
 			$data_images_arr = $this->_filter_array($result_images[2]);   
-			$max_count=20;
+			$max_count=50;
 			$j=0;
 			foreach($data_images_arr as $vv){
 				if($j>$max_count){
@@ -137,7 +140,7 @@ class craw{
 				}elseif(substr($vv,0,1)=='/'){
 					$file_target1 = $host_path.$vv;
 				}else{
-					$file_target1 = dirname($file_target).'/'.$vv;
+					$file_target1 = dirname($file_target).'/'.$vv; 
 				}  
 				$fileinfo1 = pathinfo($vv);
 				$fileName1 = $fileinfo1['basename'];
@@ -150,13 +153,12 @@ class craw{
 				}  
 				$file = str_replace($vv,$file_picture.'/'.$fileName1,$file);
 				$j++;
-			}   
+			}  
 			if(!is_dir($file_css)){
 				mkdir($file_css,0777,true);
 				chmod($file_dir,0777); 
 			}
-			file_put_contents($file_css.'/'.$fileName.$extension_name,$file);
-			 
+			file_put_contents($file_css.'/'.$fileName.$extension_name,$file); 
 		}  
 	}
 	private function _filter_array($arr){ 
@@ -189,8 +191,7 @@ class craw{
 	*** $url_arr 文件地址
 	*** $op 可选参数，2表示强制curl获取
 	*/
-	private function _get_contents($root_url,$op=1){ 
-		 
+	private function _get_contents($root_url,$op=1){  
 		if(strpos($root_url,'https')!==false || $op==2){
 			$ch = curl_init();//初始化一个资源
 			$headers = array(); 
@@ -314,7 +315,7 @@ class craw{
 				$fileName = $fileinfo['basename'];
 				$content = str_replace($url.$extension_name,$file_dir.'/'.$fileName,$content);
 			}elseif($type ==3 && !$op){
-				$content = str_replace($url.$extension_name,$front_web.$url.$extension_name,$content);
+				$content = str_replace($url.$extension_name,$front_web.'/'.$url.$extension_name,$content);
 			}
 		}
 		return $content;
@@ -368,8 +369,7 @@ if(isset($_POST['url'])){
 	$data['_image'] = $_POST['image'];
 	$data['_picture'] = $_POST['picture'];
 	
-	$wrong = false;
-	var_dump($data);
+	$wrong = false; 
 	foreach($data as $k=>$v){
 		if(preg_match("/[\'.,:;*?~`!@#$%^&+=)(<>{}]|\]|\[|\/|\\\|\"|\|/",$v)){   
 			$wrong=true;
