@@ -75,8 +75,7 @@ class craw{
 		//image
 		$rule_image = "/<[\s]*img[^>]+[\s]{0,4}src=[\s]{0,4}[\'\"](.*?)[\'\"]/";
 		preg_match_all($rule_image,$data,$result_image);
-		$img_arr = $this->_filter_array($result_image[1]); 
-	
+		$img_arr = $this->_filter_array($result_image[1]);  
 		//picture
 		$rule_picture = "/[\s]*background(-image)?[\s]*:[\s]*url\([\'\"]?(.*?)[\'\"]?\)/";
 		preg_match_all($rule_picture,$data,$result_picture);
@@ -257,10 +256,10 @@ class craw{
 				$file_target = $host_path.$url.$extension_name;
 			}else{ 
 				$file_target = $host_path.'/'.$url.$extension_name;
-			}
+			} 
 			if($this->_web_down || $op || $op_true){  
-				$fileinfo = pathinfo($file_target);
-				$fileName = $fileinfo['basename'];   
+				$fileinfo = pathinfo($file_target); 
+				$fileName = iconv("UTF-8","GB18030",$fileinfo['basename']);   
 				$file = $this->_get_contents($file_target); 
 				if(!is_dir($file_dir)){
 					mkdir($file_dir,0777,true);
@@ -270,7 +269,7 @@ class craw{
 			//return $file_dir.'/'.$fileName; 
 				$j++;
 			} 
-		} 
+		}  
 	}
 	/**
 	*** 解析文件函数
@@ -318,7 +317,6 @@ class craw{
 				$fileName = $fileinfo['basename'];
 				$content = str_replace($url.$extension_name,$file_dir.'/'.$fileName,$content);
 			}elseif($type ==3 && $op){  
-				
 				$content = str_replace($url.$extension_name,$front_web.$url.$extension_name,$content);
 			} 
 		}   
