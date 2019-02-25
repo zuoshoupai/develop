@@ -29,11 +29,12 @@ class craw{
 	public function run(){
 		$data = $this->parseDom($this->root_url); 
 		$this->downloadFile($data['js'],1);
-		//$this->downloadFile($data['css'],2);
+		$this->downloadFile($data['css'],2);
 		$this->downloadFile($data['img'],3);  
 		//解析css图片并下截 
 		$this->parseCssFile($data['css']); 
-		$content = $this->parseloadFile($data['js'],1,$data['content']);
+		$content = $data['content'];
+		$content = $this->parseloadFile($data['js'],1,$content);
 		$content = $this->parseloadFile($data['css'],2,$content);
 		$content = $this->parseloadFile($data['img'],3,$content);
 		$content = $this->extra_parse($content); 
@@ -60,30 +61,31 @@ class craw{
 	}
 	private function parseDom($root_url){
   
-		$data =  $this->_get_contents($root_url,2);
+		$data =  $this->_get_contents($root_url,2); 
 		$encoding = mb_detect_encoding($data, array("ASCII","UTF-8","GB2312","GBK","BIG5")); 
 		$keytitle = iconv($encoding,"UTF-8",$data); 
 		//js  <script type="text/javascript" src="js/artTemplate_d6facd8.js"></script>
 		$rule_js = "/<[\s]*script[^>]+src=[\s]*[\'\"](.*?)\.js/";
 		preg_match_all($rule_js,$data,$result_js); 
-		$js_arr = $result_js[1]; 
+		$js_arr = $result_js[1];  
 		//css
 		$rule_css = "/<[\s]*link[^>]+href=[\s]*[\'\"](.*?)\.css/";
 		preg_match_all($rule_css,$data,$result_css); 
 		$css_arr = $result_css[1]; 
 		//image
-		$rule_image = "/<[\s]*img[^>]+src=[\s]{0,4}[\'\"](.*?)[\'\"]/";
+		$rule_image = "/<[\s]*img[^>]+[\s]{0,4}src=[\s]{0,4}[\'\"](.*?)[\'\"]/";
 		preg_match_all($rule_image,$data,$result_image);
-		$img_arr = $this->_filter_array($result_image[1]);   
+		$img_arr = $this->_filter_array($result_image[1]); 
+	
 		//picture
 		$rule_picture = "/[\s]*background(-image)?[\s]*:[\s]*url\([\'\"]?(.*?)[\'\"]?\)/";
 		preg_match_all($rule_picture,$data,$result_picture);
 		$data_images_arr = $this->_filter_array($result_picture[2]); 
-		$img_arr=array_merge($img_arr,$data_images_arr);
+		$img_arr=array_merge($img_arr,$data_images_arr); 
 		$datas = array();
-		$datas['js'] = $js_arr;
-		$datas['css'] = $css_arr; 
-		$datas['img'] = $img_arr;
+		$datas['js'] = array_unique($js_arr);
+		$datas['css'] = array_unique($css_arr); 
+		$datas['img'] = array_unique($img_arr); 	
 		$datas['content'] = $data;
 		return $datas;
 	}
@@ -298,7 +300,8 @@ class craw{
 		}
 		foreach($url_arr as $url)
 		{
-			$op = false;
+			
+			$op = true;
 			if(strpos($url,'http')!==false){
 				$file_target = $url.$extension_name;
 				$op = false;
@@ -308,16 +311,17 @@ class craw{
 				$op = false;
 				$front_web=$root_http.':';
 			}else{
-				$front_web=$root_path;
-			}
-			if($this->_web_down || $op || $op_true){ 
+				$front_web=$root_path.'/';
+			} 
+			if($this->_web_down || $op_true){ 
 				$fileinfo = pathinfo($url.$extension_name);
 				$fileName = $fileinfo['basename'];
 				$content = str_replace($url.$extension_name,$file_dir.'/'.$fileName,$content);
-			}elseif($type ==3 && !$op){
-				$content = str_replace($url.$extension_name,$front_web.'/'.$url.$extension_name,$content);
-			}
-		}
+			}elseif($type ==3 && $op){  
+				
+				$content = str_replace($url.$extension_name,$front_web.$url.$extension_name,$content);
+			} 
+		}   
 		return $content;
 	}
 	private function creatzip()
@@ -362,7 +366,7 @@ class craw{
 	}	
    
 }   
-ini_set('max_execution_time', '200');
+ini_set('max_execution_time', '500');
 if(isset($_POST['url'])){
 	$data['_css'] = $_POST['css'];
 	$data['_js'] = $_POST['js'];
@@ -382,7 +386,7 @@ if(isset($_POST['url'])){
 	if(empty(trim($_POST['url']))){   
 		$wrong=true;
 	} 
-	if(!preg_match('/^((http|ftp|https):\/\/)[\w-_\/\.%=\?]+(\/[\w-_%=\?]+)*\/?$/',trim($_POST['url']))){ 
+	if(!preg_match('/^((http|ftp|https):\/\/)[\w-_\/\.%=\?]+(\/[\w-_%=\?]+)*\/?/',trim($_POST['url']))){ 
 		$wrong=true; 
 	} 
 	if(!$wrong){
