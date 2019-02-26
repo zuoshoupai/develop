@@ -4,7 +4,7 @@ if(!isset($_POST['scene'])){
 }else{
 	
 	if(empty($_POST['scene']) || !in_array($_POST['scene'],array('pc','web','wechat'))){
-		$wrong = true;//23
+		$wrong = true;
 	}else{
 		$compress = false;
 		$compress_str = '';
