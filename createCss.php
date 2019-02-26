@@ -10,9 +10,14 @@ if(!isset($_POST['scene'])){
 		$compress_str = '';
 		if(isset($_POST['compress']) && $_POST['compress']){
 			$compress = true;
-			$compress_str='_min_'; 
-		} 
-		$fileName="zane_".$_POST['scene'].$compress_str.".css"; 
+			$compress_str='_min'; 
+		}  
+		if($_POST['scene']=='wechat'){
+			$fileName="zane_".$_POST['scene'].$compress_str.".wxss"; 
+		}else{
+			$fileName="zane_".$_POST['scene'].$compress_str.".css"; 
+		}
+		
 		header("Content-type:application/octet-stream"); 
 		header("Content-Disposition:attachment;filename = ".$fileName); 
 		create_css($_POST['scene'],$compress);
