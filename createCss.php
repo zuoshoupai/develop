@@ -233,7 +233,7 @@ echo <<<EOD
 .flex-column{flex-direction:column}$trans
 .flex-start{justify-content: flex-start}$trans
 .flex-end{justify-content:flex-end}$trans
-.flex-cente{justify-content:center}$trans
+.flex-center{justify-content:center}$trans
 .flex-space-between{justify-content: space-between}$trans
 .flex-space-around{justify-content: space-around;}$trans
 .flex-align-center{align-items:center;}$trans
