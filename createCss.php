@@ -176,7 +176,7 @@ if($scene=='pc'){
 }$trans
 @media(max-width:1199px){ $trans
 .z-container{width:960px;margin:0 auto;}
-}/$trans
+$trans
 ET;
 	echo "/*枚举部分-字号*/$trans"; 
 	$font_s=5;
