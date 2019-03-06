@@ -120,8 +120,7 @@ ET;
 if($scene=='pc'){
 echo <<<ET
 @media(min-width:1200px){ $trans
-.z-container{width:1200px;margin:0 auto;}
-}/$trans
+.z-container{width:1200px;margin:0 auto;}$trans
 ET;
 }
 echo "/*枚举部分-字号*/$trans"; 
@@ -228,6 +227,7 @@ ET;
 }
 echo <<<EOD
 /*弹性布局*/$trans
+.border-box{box-sizing: border-box;}
 .flex{display:flex;}$trans
 .flex-row{flex-direction: row}$trans
 .flex-column{flex-direction:column}$trans
