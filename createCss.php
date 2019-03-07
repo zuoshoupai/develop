@@ -18,8 +18,8 @@ if(!isset($_POST['scene'])){
 			$fileName="zane_".$_POST['scene'].$compress_str.".css"; 
 		}
 		
-		header("Content-type:application/octet-stream"); 
-		header("Content-Disposition:attachment;filename = ".$fileName); 
+		//header("Content-type:application/octet-stream"); 
+		//header("Content-Disposition:attachment;filename = ".$fileName); 
 		create_css($_POST['scene'],$compress);
 	}
 	die;
@@ -40,14 +40,37 @@ if($scene=='wechat'){
 $trans='';
 if(!$compress){
 	$trans="\r\n";
-} 
+}
+echo "
+/*弹性布局*/$trans
+.border-box{box-sizing: border-box;}
+.flex{display:flex;}$trans
+.flex-row{flex-direction: row}$trans
+.flex-column{flex-direction:column}$trans
+.flex-start{justify-content: flex-start}$trans
+.flex-end{justify-content:flex-end}$trans
+.flex-center{justify-content:center}$trans
+.flex-space-between{justify-content: space-between}$trans
+.flex-space-around{justify-content: space-around;}$trans
+.flex-align-center{align-items:center;}$trans
+.flex-wrap{flex-wrap: wrap;}$trans
+$trans/* 拓展设置  需要自定义*/$trans
+.color0{color:#000;}$trans
+.color3{color:#333;}$trans
+.color6{color:#666;}$trans
+.color9{color:#999;}$trans
+.color-b{color:#50d7da;}$trans
+.color-w{color:#fff;}$trans 
+.bg-w{background-color:#fff;}$trans
+";
+echo "/*end*/\r\n"; 
 echo <<<ET
 /*fl fr text-r text-l 等等*/$trans
 ET;
-echo <<<ET
-/*固定部分*/$trans
+echo "
+/*初始化*/$trans
 body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {margin:0;padding:0;}$trans
-body, button, input, select, textarea {font:12px/1.5tahoma, arial, \5b8b\4f53;}$trans
+body, button, input, select, textarea {outline: none;font:12px/1.5tahoma, arial, \5b8b\4f53;}$trans
 h1, h2, h3, h4, h5, h6{font-size:100%;}$trans
 address, cite, dfn, em, var {font-style:normal;}$trans
 code, kbd, pre, samp {font-family:couriernew, courier, monospace;}$trans
@@ -73,6 +96,7 @@ img{max-width: 100%;max-height: 100%;}$trans
 .none{display:none;}$trans
 .hidden{visibility: hidden;}$trans
 .clear{clear:both;}$trans
+.f-clear{overflow:hidden;}$trans
 .position-a{position:absolute }$trans
 .position-r{position:relative }$trans
 .bold{font-weight:600}$trans
@@ -109,8 +133,7 @@ img{max-width: 100%;max-height: 100%;}$trans
 .line-height75{line-height: 75%;}$trans
 .line-height100{line-height: 100%;}$trans
 .lights:hover{color:#666;}$trans
-
-ET;
+";
 if($scene=='web'){
 echo <<<ET
 .page{max-width: 750px;min-width:320px;margin: 0 auto;}$trans
@@ -225,29 +248,7 @@ ET;
 	} 
 	echo "}$trans";
 }
-echo <<<EOD
-/*弹性布局*/$trans
-.border-box{box-sizing: border-box;}
-.flex{display:flex;}$trans
-.flex-row{flex-direction: row}$trans
-.flex-column{flex-direction:column}$trans
-.flex-start{justify-content: flex-start}$trans
-.flex-end{justify-content:flex-end}$trans
-.flex-center{justify-content:center}$trans
-.flex-space-between{justify-content: space-between}$trans
-.flex-space-around{justify-content: space-around;}$trans
-.flex-align-center{align-items:center;}$trans
-.flex-wrap{flex-wrap: wrap;}$trans
-$trans/* 拓展设置  需要自定义*/$trans
-.color0{color:#000;}$trans
-.color3{color:#333;}$trans
-.color6{color:#666;}$trans
-.color9{color:#999;}$trans
-.color-b{color:#50d7da;}$trans
-.color-w{color:#fff;}$trans 
-.bg-w{background-color:#fff;}$trans
-EOD;
-echo "/*end*/";
+
 }
 ?>
 <!DOCTYPE html>
