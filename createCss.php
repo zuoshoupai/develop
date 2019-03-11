@@ -144,6 +144,7 @@ if($scene=='pc'){
 echo <<<ET
 @media(min-width:1200px){ $trans
 .z-container{width:1200px;margin:0 auto;}$trans
+.z-min{width:1300px;margin:0 auto;}$trans
 ET;
 }
 echo "/*枚举部分-字号*/$trans"; 
@@ -198,6 +199,7 @@ if($scene=='pc'){
 }$trans
 @media(max-width:1199px){ $trans
 .z-container{width:960px;margin:0 auto;}
+.z-min{width:1000px;margin:0 auto;}
 $trans
 ET;
 	echo "/*枚举部分-字号*/$trans"; 
