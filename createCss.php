@@ -33,7 +33,7 @@ function create_css($scene,$compress){
 	//$scene = 'pc';
 	if($scene=='wechat'){
 		$extra = 'rpx';//应用场景单位
-		$times = 1;
+		$times = 2;
 	}elseif($scene=='web'){
 		$extra = 'rem';//应用场景单位
 		$times = 0.01;
@@ -50,6 +50,7 @@ ET;
 }
 echo "/*弹性布局*/$trans
 .border-box{box-sizing: border-box;}
+.d-none{display:none;}$trans
 .d-block{display: block}$trans
 .d-inline-block{display: inline-block}$trans
 .d-flex{display:flex;}$trans
@@ -97,8 +98,7 @@ img{max-width: 100%;max-height: 100%;}$trans
 .text-center{text-align:center;}$trans
 .text-right{text-align:right;}$trans
 .text-left{text-align:left }$trans
-.pointer{cursor:pointer;}$trans
-.none{display:none;}$trans
+.pointer{cursor:pointer;}$trans 
 .hidden{visibility: hidden;}$trans
 .clear{clear:both;}$trans
 .clearfix{overflow:hidden;}$trans
@@ -106,15 +106,16 @@ img{max-width: 100%;max-height: 100%;}$trans
 .position-relative{position:relative }$trans
 .bold{font-weight:600}$trans
 .p-0{padding:0}$trans
-.p-r0{padding-right:0}$trans
-.pl-0{padding-left:0}$trans
-.pt-0{padding-top:0}$trans
-.pb-0{padding-bottom:0}$trans
+.p-r0,.px-0{padding-right:0}$trans
+.pl-0,.px-0{padding-left:0}$trans
+.pt-0,.py-0{padding-top:0}$trans
+.pb-0,py-0{padding-bottom:0}$trans
 .m-0{margin:0;}$trans
-.mr-0{margin-right:0}$trans
-.ml-0{margin-left:0}$trans
-.mt-0{margin-top:0}$trans
-.mb-0{margin-bottom:0}$trans
+.mx-auto{margin-right:auto;margin-left:auto;}$trans
+.mr-0,.mx-0{margin-right:0}$trans
+.ml-0,.mx-0{margin-left:0}$trans
+.mt-0,.my-0{margin-top:0}$trans
+.mb-0,.my-0{margin-bottom:0}$trans
 .border0{border:0;}$trans
 .t-0{top:0;}$trans
 .r-0{right:0}$trans
