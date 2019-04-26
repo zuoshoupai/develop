@@ -7,7 +7,6 @@ author:zane
 if(!isset($_POST['scene'])){
 	
 }else{
-	
 	if(empty($_POST['scene']) || !in_array($_POST['scene'],array('pc','web','wechat'))){
 		$wrong = true;
 	}else{
@@ -43,9 +42,13 @@ function create_css($scene,$compress){
 		$times = 1;
 	}
 	$trans='';
-
-echo "
-/*弹性布局*/$trans
+if($scene=='pc'){
+echo <<<ET
+.container-fluid{width:100%;}$trans
+.z-container{width:1200px;margin:0 auto;min-width:1300px;}
+ET;
+}
+echo "/*弹性布局*/$trans
 .border-box{box-sizing: border-box;}
 .d-block{display: block}$trans
 .d-inline-block{display: inline-block}$trans
@@ -55,8 +58,8 @@ echo "
 .justify-content-start{justify-content: flex-start}$trans
 .justify-content-end{justify-content:flex-end}$trans
 .justify-content-center{justify-content:center}$trans
-.justify-content-space-between{justify-content: space-between}$trans
-.justify-content-space-around{justify-content: space-around;}$trans
+.justify-content-between{justify-content: space-between}$trans
+.justify-content-around{justify-content: space-around;}$trans
 .align-items-center{align-items:center;}$trans
 .flex-wrap{flex-wrap: wrap;}$trans
 $trans/* 拓展设置  需要自定义*/$trans
@@ -147,19 +150,12 @@ ET;
 }
 if(!$compress){
 	$trans="\r\n";
-}
-if($scene=='pc'){
-echo <<<ET
-@media(min-width:1200px){ $trans
-.z-container{width:1200px;margin:0 auto;}$trans
-.z-min{width:1300px;margin:0 auto;}$trans
-ET;
-}
+} 
 echo "/*枚举部分-字号*/$trans"; 
-$font_s=5;
-$font_e=40;
-for ($i=$font_s;$i<=$font_e;$i++) {
-	echo ".font".$i."{font-size:".$i*$times.$extra.";}$trans";
+$font_s=8;
+$font_e=20;
+for ($i=$font_s;$i<=$font_e;$i=$i+2) {
+	echo ".font".$i."{font-size:".$i*$times."px;}$trans";
 }
 echo "/*枚举部分-外边距*/$trans";  
 $s=5;
@@ -167,10 +163,10 @@ $step=5;
 $e=100;
 for($i=$s;$i<=$e;$i=$i+$step){
 	echo ".m-".$i."{margin:".$i*$times.$extra.";}$trans";
-	echo ".mt-".$i."{margin-top:".$i*$times.$extra.";}$trans";
-	echo ".mt-".$i."{margin-right:".$i*$times.$extra.";}$trans";
-	echo ".mb-".$i."{margin-bottom:".$i*$times.$extra.";}$trans";
-	echo ".ml-".$i."{margin-left:".$i*$times.$extra.";}$trans"; 
+	echo ".mt-".$i.",.my-".$i."{margin-top:".$i*$times.$extra.";}$trans";
+	echo ".mr-".$i.",.mx-".$i."{margin-right:".$i*$times.$extra.";}$trans";
+	echo ".mb-".$i.",.my-".$i."{margin-bottom:".$i*$times.$extra.";}$trans";
+	echo ".ml-".$i.",.mx-".$i."{margin-left:".$i*$times.$extra.";}$trans";   
 }
 echo "/*枚举部分-内边距*/$trans";  
 $s=5;
@@ -178,67 +174,11 @@ $step=5;
 $e=100;
 for($i=$s;$i<=$e;$i=$i+$step){
 	echo ".p-".$i."{padding:".$i*$times.$extra.";}$trans";
-	echo ".pt-".$i."{padding-top:".$i*$times.$extra.";}$trans";
-	echo ".pr-".$i."{padding-right:".$i*$times.$extra.";}$trans";
-	echo ".pb-".$i."{padding-bottom:".$i*$times.$extra.";}$trans";
-	echo ".pl-".$i."{padding-left:".$i*$times.$extra.";}$trans"; 
-	echo ".px-".$i."{padding-left:".$i*$times.$extra.";padding-right:".$i*$times.$extra.";}$trans";  
-}
-echo "/*枚举部分-倒角*/$trans";  
-$s=5;
-$step=5;
-$e=100;
-for($i=$s;$i<=$e;$i=$i+$step){
-	echo ".border-radius".$i."{border-radius:".$i*$times.$extra.";}$trans";
-}  
-
-if($scene=='pc'){
-	$times = 0.8;
-	echo <<<ET
-}$trans
-@media(max-width:1199px){ $trans
-.z-container{width:960px;margin:0 auto;}
-.z-min{width:1000px;margin:0 auto;}
-$trans
-ET;
-	echo "/*枚举部分-字号*/$trans"; 
-	$font_s=5;
-	$font_e=40;
-	for($i=$font_s;$i<=$font_e;$i++){
-		echo ".font".$i."{font-size:".$i*$times.$extra.";}$trans";
-	}
-	echo "/*枚举部分-外边距*/$trans";  
-	$s=5;
-	$step=5;
-	$e=100;
-	for($i=$s;$i<=$e;$i=$i+$step){
-		echo ".m-".$i."{margin:".$i*$times.$extra.";}$trans";
-		echo ".mt-".$i."{margin-top:".$i*$times.$extra.";}$trans";
-		echo ".mr-".$i."{margin-right:".$i*$times.$extra.";}$trans";
-		echo ".mb-".$i."{margin-bottom:".$i*$times.$extra.";}$trans";
-		echo ".ml-".$i."{margin-left:".$i*$times.$extra.";}$trans"; 
-	}
-	echo "/*枚举部分-内边距*/$trans";  
-	$s=5;
-	$step=5;
-	$e=100;
-	for($i=$s;$i<=$e;$i=$i+$step){
-		echo ".p-".$i."{padding:".$i*$times.$extra.";}$trans";
-		echo ".pt-".$i."{padding-top:".$i*$times.$extra.";}$trans";
-		echo ".pr-".$i."{padding-right:".$i*$times.$extra.";}$trans";
-		echo ".pb-".$i."{padding-bottom:".$i*$times.$extra.";}$trans";
-		echo ".pl-".$i."{padding-left:".$i*$times.$extra.";}$trans"; 
-		echo ".px-".$i."{padding-left:".$i*$times.$extra.";padding-right:".$i*$times.$extra.";}$trans";  
-	}
-	echo "/*枚举部分-倒角*/$trans";  
-	$s=5;
-	$step=5;
-	$e=100;
-	for($i=$s;$i<=$e;$i=$i+$step){
-		echo ".border-radius".$i."{border-radius:".$i*$times.$extra.";}$trans";
-	} 
-    echo "}"; 
-  }
+	echo ".pt-".$i.",.py-".$i."{padding-top:".$i*$times.$extra.";}$trans";
+	echo ".pr-".$i.",.px-".$i."{padding-right:".$i*$times.$extra.";}$trans";
+	echo ".pb-".$i.",.py-".$i."{padding-bottom:".$i*$times.$extra.";}$trans";
+	echo ".pl-".$i.",.px-".$i."{padding-left:".$i*$times.$extra.";}$trans";   	
+} 
 }
 
 
