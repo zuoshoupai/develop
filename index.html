@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+<title>阿泽开发工具</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content='IE=edge' http-equiv='X-UA-Compatible'>
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+	<header>
+		<div class="jumbotron jumbotron-fluid">
+		  <div class="container">
+			<h1 class="display-4">阿泽开发工具</h1>
+			<p class="lead">虽是原创 即非精品</p>
+		  </div>
+		</div>
+	</header>
+	<main class="container">
+		<table class="table">
+		  <thead>
+			<tr>
+			  <th scope="col">序号</th>
+			  <th scope="col">名称</th>
+			  <th scope="col">访问</th> 
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <th scope="row">1</th>
+			  <td>网页抓取</td>
+			  <td><a href="phpCraw.php">Go</a></td> 
+			</tr>
+			<tr>
+			  <th scope="row">2</th>
+			  <td>CSS初始化</td>
+			  <td><a href="createCss.php">Go</a></td> 
+			</tr>
+		  </tbody>
+		</table>
+	</main>
+	<footer>
+	</footer>
+</body>
+</html>
+
+
+
+
+
+
+	<script src="assets/js/plugin/raven/3.8.0/raven.min.js" crossorigin="anonymous"></script>
+	<script>
+		Raven.config("https://3053fea938b647f0885f186c2aad9f32@sentry.pot.tencent.com/5", {
+		  release: "1.0.20180725",
+		  environment: "git.weixin.qq.com",
+		  
+		  tags: {
+		    git_commit: "696ceaf"
+          
+		  }
+		}).install();
+	</script>
+	
+		<script>
+			Raven.setUserContext({
+			  "ip_address":"172.17.0.11",
+			  "email":"oncwnuLASEyVjVJJqeodqWu4ZoWw@git.weixin.qq.com",
+			  "name":"zuoshoupai",
+			  "id": "84451"
+			});
+		</script>
+	
+	
+
+
+
+<script type="text/javascript" src="assets/js/plugin/flexible/flexible.js"></script>
+<script>
+	var userLocal = 'zh_CN';
+</script>
+<script src="assets/js/require.js"></script>
+<script>
+require.config({
+  baseUrl: 'assets/js',
