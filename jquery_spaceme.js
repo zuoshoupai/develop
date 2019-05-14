@@ -1,3 +1,4 @@
+/*author:zane version:1.2 date:2019-5-14 */
 ;(function ($) {
     $.fn.spaceme = function (options) { //定义插件方法名
 		options = $.extend({
