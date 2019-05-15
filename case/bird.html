@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8;"/>
+<title>大雪中孤独飞行的小鸟</title>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<style>
+body{overflow: hidden;}
+#bird{width: 90px;height: 68px;position:absolute;left:100px;top:100px;}
+body{background-image: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557917369236&di=084687a0d01a545480e8a332c22b08d5&imgtype=0&src=http%3A%2F%2Fdpic.tiankong.com%2Frv%2Fdm%2FQJ6127196981.jpg');background-size: cover;position: relative;}
+.bird-38{transform: rotate(-30deg)}
+.bird-39{transform: rotate(0deg)}
+.bird-40{transform: rotate(70deg)}
+.bird-41{transform: rotateY(210deg)}
+.bird-42{transform: rotateY(180deg) rotate(-30deg);}
+.bird-37{transform: rotateY(180deg)}
+</style>
+</head>
+<body>
+    <img src="bird.gif" id="bird" title="方向键控制"/>
+</body>
+<script>
+$(function(){
+    var $snow = $('<div></div>').css('position','absolute').html('❆');
+    var screenHeight=$(document).height();
+    var screenWidth=$(document).width(); 
+    
+    setInterval(function(){
+        var startLeft=Math.random()*screenWidth;
+        var startTop=Math.random()*screenHeight*0.25;
+        var startOpacity=Math.random()*0.5+0.5;
+        var fanalLeft=Math.random()*screenWidth*0.5;
+        if(startLeft<fanalLeft){
+            var tmp=fanalLeft;
+            fanalLeft=startLeft;
+            startLeft=fanalLeft;
+        }
+        var durationFly=screenHeight*10+1000*Math.random();
+        $snow.clone().appendTo('body').css({
+                'color':'#fff',
+                'font-size':50,
+                'opacity':startOpacity,
+                'top':startTop,
+                'left':startLeft
+        }).animate({
+            'opacity':0.5,
+                'top':screenHeight,
+                'left':fanalLeft
+        },durationFly,function(){
+            $(this).remove();
+        })
+    },200)
+    var code=39;
+    var bird_pos=$("#bird").offset();
+    var $bird=$('#bird');
+    var tward_r=1,tward_u=1;
+    $('body').keydown(function(event){
+        
+        var speed=10;
+       if(event.keyCode==code){
+           console.log(code,bird_pos)
+           
+            switch(event.keyCode){
+               case 37:
+                    bird_pos.left-=speed;
+                    bird_pos.top-=speed*0.5;
+                    break;
+                case 38:
+                    bird_pos.top-=speed;
+                    bird_pos.left+=tward_r*speed*0.5;
+                    break;
+                case 39:
+                    bird_pos.left+=speed;
+                    bird_pos.top-=speed*0.5;
+                    break;
+                case 40:
+                    bird_pos.top+=speed;
+                    bird_pos.left+=tward_r*speed*0.5;
+                    break;
+           }
+           if(bird_pos.left<0){
+              bird_pos.left=0;
+           }
+           if(bird_pos.top<0){
+            bird_pos.top=0;
+           }
+           if(bird_pos.left>$(window).width()){
+              bird_pos.left=$(window).width();
+           }
+           if(bird_pos.top>$(window).height()){
+            bird_pos.top=$(window).height();
+           }
+           $bird.offset(bird_pos);
+       }else{
+           
+           $('#bird').removeClass().addClass('bird-'+event.keyCode);
+           if(code==37 && event.keyCode==40){
+            tward_r=-1;
+            tward_u=-1;
+            $('#bird').removeClass().addClass('bird-41');
+           }else if(code==37 && event.keyCode==38){
+            tward_r=-1;
+            tward_u=-1;
+            $('#bird').removeClass().addClass('bird-42');
+           }else if(code==39){
+            tward_r=1;
+           }
+           code=event.keyCode; 
+       }
+    })
+})
+</script>
+</html>
