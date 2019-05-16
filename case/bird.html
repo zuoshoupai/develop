@@ -28,6 +28,7 @@ $(function(){
         var startLeft=Math.random()*screenWidth;
         var startTop=Math.random()*screenHeight*0.25;
         var startOpacity=Math.random()*0.5+0.5;
+		var fontSize=Math.random()*20+30;
         var fanalLeft=Math.random()*screenWidth*0.5;
         if(startLeft<fanalLeft){
             var tmp=fanalLeft;
@@ -37,7 +38,7 @@ $(function(){
         var durationFly=screenHeight*10+1000*Math.random();
         $snow.clone().appendTo('body').css({
                 'color':'#fff',
-                'font-size':50,
+                'font-size':fontSize,
                 'opacity':startOpacity,
                 'top':startTop,
                 'left':startLeft
