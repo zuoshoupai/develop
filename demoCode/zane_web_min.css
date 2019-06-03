@@ -1,26 +1,26 @@
 /*弹性布局*/
-.border-box{box-sizing: border-box;}
-.d-none{display:none;}
+.border-box{box-sizing: border-box !important;}
+.d-none{display:none !important;}
 .d-block{display: block}
-.d-inline-block{display: inline-block}
-.d-flex{display:flex;}
-.flex-row{flex-direction: row}
-.flex-column{flex-direction:column}
-.justify-content-start{justify-content: flex-start}
-.justify-content-end{justify-content:flex-end}
-.justify-content-center{justify-content:center}
-.justify-content-between{justify-content: space-between}
-.justify-content-around{justify-content: space-around;}
-.align-items-center{align-items:center;}
-.flex-wrap{flex-wrap: wrap;}
+.d-inline-block{display: inline-block !important}
+.d-flex{display:flex !important;}
+.flex-row{flex-direction: row !important}
+.flex-column{flex-direction:column !important}
+.justify-content-start{justify-content: flex-start !important}
+.justify-content-end{justify-content:flex-end !important}
+.justify-content-center{justify-content:center !important}
+.justify-content-between{justify-content: space-between !important}
+.justify-content-around{justify-content: space-around !important;}
+.align-items-center{align-items:center !important;}
+.flex-wrap{flex-wrap: wrap !important;}
 /* 拓展设置  需要自定义*/
-.color0{color:#000;}
-.color3{color:#333;}
-.color6{color:#666;}
-.color9{color:#999;}
-.color-b{color:#50d7da;}
-.color-w{color:#fff;} 
-.bg-w{background-color:#fff;}
+.color0{color:#000 !important;}
+.color3{color:#333 !important;}
+.color6{color:#666 !important;}
+.color9{color:#999 !important;}
+.color-b{color:#50d7da !important;}
+.color-w{color:#fff !important;} 
+.bg-w{background-color:#fff !important;}
 
 /*初始化*/
 body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {margin:0;padding:0;}
@@ -39,56 +39,56 @@ fieldset, img {border:0;}
 button, input, select, textarea {font-size:100%;}
 table {border-collapse:collapse;border-spacing:0;}
 img{max-width: 100%;max-height: 100%;}
-.float-left{float:left;}
-.float-right{float:right;}
+.float-left{float:left !important;}
+.float-right{float:right !important;}
 .full-width{width:100% !important }
-.fly-out{position: absolute;left: -10000px;}
-.text-center{text-align:center;}
-.text-right{text-align:right;}
-.text-left{text-align:left }
-.pointer{cursor:pointer;} 
-.hidden{visibility: hidden;}
-.clear{clear:both;}
-.clearfix{overflow:hidden;}
-.position-absolute{position:absolute }
-.position-relative{position:relative }
-.bold{font-weight:600}
-.p-0{padding:0}
-.p-r0,.px-0{padding-right:0}
-.pl-0,.px-0{padding-left:0}
-.pt-0,.py-0{padding-top:0}
-.pb-0,py-0{padding-bottom:0}
-.m-0{margin:0;}
-.mx-auto{margin-right:auto;margin-left:auto;}
-.mr-0,.mx-0{margin-right:0}
-.ml-0,.mx-0{margin-left:0}
-.mt-0,.my-0{margin-top:0}
-.mb-0,.my-0{margin-bottom:0}
-.border0{border:0;}
-.t-0{top:0;}
-.r-0{right:0}
-.l-0{left:0}
-.b-0{bottom:0}
-.border-r0{border-right:0}
-.border-l0{border-left:0}
-.border-t0{border-top:0}
-.border-b0{border-bottom:0}
-.left0{left:0;}
-.right0{right:0;}
+.fly-out{position: absolute;left: -10000px !important;}
+.text-center{text-align:center !important;}
+.text-right{text-align:right !important;}
+.text-left{text-align:left !important}
+.pointer{cursor:pointer !important;} 
+.hidden{visibility: hidden !important;}
+.clear{clear:both !important;}
+.clearfix{overflow:hidden !important;}
+.position-absolute{position:absolute !important}
+.position-relative{position:relative !important}
+.bold{font-weight:600 !important}
+.p-0{padding:0 !important}
+.p-r0,.px-0{padding-right:0 !important}
+.pl-0,.px-0{padding-left:0 !important}
+.pt-0,.py-0{padding-top:0 !important}
+.pb-0,py-0{padding-bottom:0 !important}
+.m-0{margin:0 !important;}
+.mx-auto{margin-right:auto !important;margin-left:auto !important;}
+.mr-0,.mx-0{margin-right:0 !important}
+.ml-0,.mx-0{margin-left:0 !important}
+.mt-0,.my-0{margin-top:0 !important}
+.mb-0,.my-0{margin-bottom:0 !important}
+.border0{border:0 !important;}
+.t-0{top:0 !important;}
+.r-0{right:0 !important}
+.l-0{left:0 !important}
+.b-0{bottom:0 !important}
+.border-r0{border-right:0 !important}
+.border-l0{border-left:0 !important}
+.border-t0{border-top:0 !important}
+.border-b0{border-bottom:0 !important}
+.left0{left:0 !important;}
+.right0{right:0 !important;}
 .bottom0{bottom:0;}
-.top0{top:0;}
-.index-9{z-index:9}
-.index-99{z-index:99}
-.index-999{z-index:999}
-.index-9999{z-index:9999}
-.w-25{width:25%}
-.w-50{width:50%}
-.w-75{width:75%}
-.w-100{width:100%}
-.h-100{height: 100%;}
-.line-height75{line-height: 75%;}
-.line-height100{line-height: 100%;}
-.lights:hover{color:#666;}
+.top0{top:0 !important;}
+.index-9{z-index:9 !important}
+.index-99{z-index:99 !important}
+.index-999{z-index:999 !important}
+.index-9999{z-index:9999 !important}
+.w-25{width:25% !important}
+.w-50{width:50% !important}
+.w-75{width:75% !important}
+.w-100{width:100% !important}
+.h-100{height: 100% !important;}
+.line-height75{line-height: 75% !important;}
+.line-height100{line-height: 100% !important;}
+.lights:hover{color:#666 !important;}
 /*end*/
-.page{max-width: 750px;min-width:320px;margin: 0 auto;}
-/*枚举部分-字号*/.font8{font-size:0.08px;}.font10{font-size:0.1px;}.font12{font-size:0.12px;}.font14{font-size:0.14px;}.font16{font-size:0.16px;}.font18{font-size:0.18px;}.font20{font-size:0.2px;}/*枚举部分-外边距*/.m-5{margin:0.05rem;}.mt-5,.my-5{margin-top:0.05rem;}.mr-5,.mx-5{margin-right:0.05rem;}.mb-5,.my-5{margin-bottom:0.05rem;}.ml-5,.mx-5{margin-left:0.05rem;}.m-10{margin:0.1rem;}.mt-10,.my-10{margin-top:0.1rem;}.mr-10,.mx-10{margin-right:0.1rem;}.mb-10,.my-10{margin-bottom:0.1rem;}.ml-10,.mx-10{margin-left:0.1rem;}.m-15{margin:0.15rem;}.mt-15,.my-15{margin-top:0.15rem;}.mr-15,.mx-15{margin-right:0.15rem;}.mb-15,.my-15{margin-bottom:0.15rem;}.ml-15,.mx-15{margin-left:0.15rem;}.m-20{margin:0.2rem;}.mt-20,.my-20{margin-top:0.2rem;}.mr-20,.mx-20{margin-right:0.2rem;}.mb-20,.my-20{margin-bottom:0.2rem;}.ml-20,.mx-20{margin-left:0.2rem;}.m-25{margin:0.25rem;}.mt-25,.my-25{margin-top:0.25rem;}.mr-25,.mx-25{margin-right:0.25rem;}.mb-25,.my-25{margin-bottom:0.25rem;}.ml-25,.mx-25{margin-left:0.25rem;}.m-30{margin:0.3rem;}.mt-30,.my-30{margin-top:0.3rem;}.mr-30,.mx-30{margin-right:0.3rem;}.mb-30,.my-30{margin-bottom:0.3rem;}.ml-30,.mx-30{margin-left:0.3rem;}.m-35{margin:0.35rem;}.mt-35,.my-35{margin-top:0.35rem;}.mr-35,.mx-35{margin-right:0.35rem;}.mb-35,.my-35{margin-bottom:0.35rem;}.ml-35,.mx-35{margin-left:0.35rem;}.m-40{margin:0.4rem;}.mt-40,.my-40{margin-top:0.4rem;}.mr-40,.mx-40{margin-right:0.4rem;}.mb-40,.my-40{margin-bottom:0.4rem;}.ml-40,.mx-40{margin-left:0.4rem;}.m-45{margin:0.45rem;}.mt-45,.my-45{margin-top:0.45rem;}.mr-45,.mx-45{margin-right:0.45rem;}.mb-45,.my-45{margin-bottom:0.45rem;}.ml-45,.mx-45{margin-left:0.45rem;}.m-50{margin:0.5rem;}.mt-50,.my-50{margin-top:0.5rem;}.mr-50,.mx-50{margin-right:0.5rem;}.mb-50,.my-50{margin-bottom:0.5rem;}.ml-50,.mx-50{margin-left:0.5rem;}.m-55{margin:0.55rem;}.mt-55,.my-55{margin-top:0.55rem;}.mr-55,.mx-55{margin-right:0.55rem;}.mb-55,.my-55{margin-bottom:0.55rem;}.ml-55,.mx-55{margin-left:0.55rem;}.m-60{margin:0.6rem;}.mt-60,.my-60{margin-top:0.6rem;}.mr-60,.mx-60{margin-right:0.6rem;}.mb-60,.my-60{margin-bottom:0.6rem;}.ml-60,.mx-60{margin-left:0.6rem;}.m-65{margin:0.65rem;}.mt-65,.my-65{margin-top:0.65rem;}.mr-65,.mx-65{margin-right:0.65rem;}.mb-65,.my-65{margin-bottom:0.65rem;}.ml-65,.mx-65{margin-left:0.65rem;}.m-70{margin:0.7rem;}.mt-70,.my-70{margin-top:0.7rem;}.mr-70,.mx-70{margin-right:0.7rem;}.mb-70,.my-70{margin-bottom:0.7rem;}.ml-70,.mx-70{margin-left:0.7rem;}.m-75{margin:0.75rem;}.mt-75,.my-75{margin-top:0.75rem;}.mr-75,.mx-75{margin-right:0.75rem;}.mb-75,.my-75{margin-bottom:0.75rem;}.ml-75,.mx-75{margin-left:0.75rem;}.m-80{margin:0.8rem;}.mt-80,.my-80{margin-top:0.8rem;}.mr-80,.mx-80{margin-right:0.8rem;}.mb-80,.my-80{margin-bottom:0.8rem;}.ml-80,.mx-80{margin-left:0.8rem;}.m-85{margin:0.85rem;}.mt-85,.my-85{margin-top:0.85rem;}.mr-85,.mx-85{margin-right:0.85rem;}.mb-85,.my-85{margin-bottom:0.85rem;}.ml-85,.mx-85{margin-left:0.85rem;}.m-90{margin:0.9rem;}.mt-90,.my-90{margin-top:0.9rem;}.mr-90,.mx-90{margin-right:0.9rem;}.mb-90,.my-90{margin-bottom:0.9rem;}.ml-90,.mx-90{margin-left:0.9rem;}.m-95{margin:0.95rem;}.mt-95,.my-95{margin-top:0.95rem;}.mr-95,.mx-95{margin-right:0.95rem;}.mb-95,.my-95{margin-bottom:0.95rem;}.ml-95,.mx-95{margin-left:0.95rem;}.m-100{margin:1rem;}.mt-100,.my-100{margin-top:1rem;}.mr-100,.mx-100{margin-right:1rem;}.mb-100,.my-100{margin-bottom:1rem;}.ml-100,.mx-100{margin-left:1rem;}/*枚举部分-内边距*/.p-5{padding:0.05rem;}.pt-5,.py-5{padding-top:0.05rem;}.pr-5,.px-5{padding-right:0.05rem;}.pb-5,.py-5{padding-bottom:0.05rem;}.pl-5,.px-5{padding-left:0.05rem;}.p-10{padding:0.1rem;}.pt-10,.py-10{padding-top:0.1rem;}.pr-10,.px-10{padding-right:0.1rem;}.pb-10,.py-10{padding-bottom:0.1rem;}.pl-10,.px-10{padding-left:0.1rem;}.p-15{padding:0.15rem;}.pt-15,.py-15{padding-top:0.15rem;}.pr-15,.px-15{padding-right:0.15rem;}.pb-15,.py-15{padding-bottom:0.15rem;}.pl-15,.px-15{padding-left:0.15rem;}.p-20{padding:0.2rem;}.pt-20,.py-20{padding-top:0.2rem;}.pr-20,.px-20{padding-right:0.2rem;}.pb-20,.py-20{padding-bottom:0.2rem;}.pl-20,.px-20{padding-left:0.2rem;}.p-25{padding:0.25rem;}.pt-25,.py-25{padding-top:0.25rem;}.pr-25,.px-25{padding-right:0.25rem;}.pb-25,.py-25{padding-bottom:0.25rem;}.pl-25,.px-25{padding-left:0.25rem;}.p-30{padding:0.3rem;}.pt-30,.py-30{padding-top:0.3rem;}.pr-30,.px-30{padding-right:0.3rem;}.pb-30,.py-30{padding-bottom:0.3rem;}.pl-30,.px-30{padding-left:0.3rem;}.p-35{padding:0.35rem;}.pt-35,.py-35{padding-top:0.35rem;}.pr-35,.px-35{padding-right:0.35rem;}.pb-35,.py-35{padding-bottom:0.35rem;}.pl-35,.px-35{padding-left:0.35rem;}.p-40{padding:0.4rem;}.pt-40,.py-40{padding-top:0.4rem;}.pr-40,.px-40{padding-right:0.4rem;}.pb-40,.py-40{padding-bottom:0.4rem;}.pl-40,.px-40{padding-left:0.4rem;}.p-45{padding:0.45rem;}.pt-45,.py-45{padding-top:0.45rem;}.pr-45,.px-45{padding-right:0.45rem;}.pb-45,.py-45{padding-bottom:0.45rem;}.pl-45,.px-45{padding-left:0.45rem;}.p-50{padding:0.5rem;}.pt-50,.py-50{padding-top:0.5rem;}.pr-50,.px-50{padding-right:0.5rem;}.pb-50,.py-50{padding-bottom:0.5rem;}.pl-50,.px-50{padding-left:0.5rem;}.p-55{padding:0.55rem;}.pt-55,.py-55{padding-top:0.55rem;}.pr-55,.px-55{padding-right:0.55rem;}.pb-55,.py-55{padding-bottom:0.55rem;}.pl-55,.px-55{padding-left:0.55rem;}.p-60{padding:0.6rem;}.pt-60,.py-60{padding-top:0.6rem;}.pr-60,.px-60{padding-right:0.6rem;}.pb-60,.py-60{padding-bottom:0.6rem;}.pl-60,.px-60{padding-left:0.6rem;}.p-65{padding:0.65rem;}.pt-65,.py-65{padding-top:0.65rem;}.pr-65,.px-65{padding-right:0.65rem;}.pb-65,.py-65{padding-bottom:0.65rem;}.pl-65,.px-65{padding-left:0.65rem;}.p-70{padding:0.7rem;}.pt-70,.py-70{padding-top:0.7rem;}.pr-70,.px-70{padding-right:0.7rem;}.pb-70,.py-70{padding-bottom:0.7rem;}.pl-70,.px-70{padding-left:0.7rem;}.p-75{padding:0.75rem;}.pt-75,.py-75{padding-top:0.75rem;}.pr-75,.px-75{padding-right:0.75rem;}.pb-75,.py-75{padding-bottom:0.75rem;}.pl-75,.px-75{padding-left:0.75rem;}.p-80{padding:0.8rem;}.pt-80,.py-80{padding-top:0.8rem;}.pr-80,.px-80{padding-right:0.8rem;}.pb-80,.py-80{padding-bottom:0.8rem;}.pl-80,.px-80{padding-left:0.8rem;}.p-85{padding:0.85rem;}.pt-85,.py-85{padding-top:0.85rem;}.pr-85,.px-85{padding-right:0.85rem;}.pb-85,.py-85{padding-bottom:0.85rem;}.pl-85,.px-85{padding-left:0.85rem;}.p-90{padding:0.9rem;}.pt-90,.py-90{padding-top:0.9rem;}.pr-90,.px-90{padding-right:0.9rem;}.pb-90,.py-90{padding-bottom:0.9rem;}.pl-90,.px-90{padding-left:0.9rem;}.p-95{padding:0.95rem;}.pt-95,.py-95{padding-top:0.95rem;}.pr-95,.px-95{padding-right:0.95rem;}.pb-95,.py-95{padding-bottom:0.95rem;}.pl-95,.px-95{padding-left:0.95rem;}.p-100{padding:1rem;}.pt-100,.py-100{padding-top:1rem;}.pr-100,.px-100{padding-right:1rem;}.pb-100,.py-100{padding-bottom:1rem;}.pl-100,.px-100{padding-left:1rem;}
+.page{max-width: 750px !important;min-width:320px !important;margin: 0 auto !important;}
+/*枚举部分-字号*/.font8{font-size:0.08px !important;}.font10{font-size:0.1px !important;}.font12{font-size:0.12px !important;}.font14{font-size:0.14px !important;}.font16{font-size:0.16px !important;}.font18{font-size:0.18px !important;}.font20{font-size:0.2px !important;}/*枚举部分-外边距*/.m-5{margin:0.05rem !important;}.mt-5,.my-5{margin-top:0.05rem !important;}.mr-5,.mx-5{margin-right:0.05rem !important;}.mb-5,.my-5{margin-bottom:0.05rem !important;}.ml-5,.mx-5{margin-left:0.05rem !important;}.m-10{margin:0.1rem !important;}.mt-10,.my-10{margin-top:0.1rem !important;}.mr-10,.mx-10{margin-right:0.1rem !important;}.mb-10,.my-10{margin-bottom:0.1rem !important;}.ml-10,.mx-10{margin-left:0.1rem !important;}.m-15{margin:0.15rem !important;}.mt-15,.my-15{margin-top:0.15rem !important;}.mr-15,.mx-15{margin-right:0.15rem !important;}.mb-15,.my-15{margin-bottom:0.15rem !important;}.ml-15,.mx-15{margin-left:0.15rem !important;}.m-20{margin:0.2rem !important;}.mt-20,.my-20{margin-top:0.2rem !important;}.mr-20,.mx-20{margin-right:0.2rem !important;}.mb-20,.my-20{margin-bottom:0.2rem !important;}.ml-20,.mx-20{margin-left:0.2rem !important;}.m-25{margin:0.25rem !important;}.mt-25,.my-25{margin-top:0.25rem !important;}.mr-25,.mx-25{margin-right:0.25rem !important;}.mb-25,.my-25{margin-bottom:0.25rem !important;}.ml-25,.mx-25{margin-left:0.25rem !important;}.m-30{margin:0.3rem !important;}.mt-30,.my-30{margin-top:0.3rem !important;}.mr-30,.mx-30{margin-right:0.3rem !important;}.mb-30,.my-30{margin-bottom:0.3rem !important;}.ml-30,.mx-30{margin-left:0.3rem !important;}.m-35{margin:0.35rem !important;}.mt-35,.my-35{margin-top:0.35rem !important;}.mr-35,.mx-35{margin-right:0.35rem !important;}.mb-35,.my-35{margin-bottom:0.35rem !important;}.ml-35,.mx-35{margin-left:0.35rem !important;}.m-40{margin:0.4rem !important;}.mt-40,.my-40{margin-top:0.4rem !important;}.mr-40,.mx-40{margin-right:0.4rem !important;}.mb-40,.my-40{margin-bottom:0.4rem !important;}.ml-40,.mx-40{margin-left:0.4rem !important;}.m-45{margin:0.45rem !important;}.mt-45,.my-45{margin-top:0.45rem !important;}.mr-45,.mx-45{margin-right:0.45rem !important;}.mb-45,.my-45{margin-bottom:0.45rem !important;}.ml-45,.mx-45{margin-left:0.45rem !important;}.m-50{margin:0.5rem !important;}.mt-50,.my-50{margin-top:0.5rem !important;}.mr-50,.mx-50{margin-right:0.5rem !important;}.mb-50,.my-50{margin-bottom:0.5rem !important;}.ml-50,.mx-50{margin-left:0.5rem !important;}.m-55{margin:0.55rem !important;}.mt-55,.my-55{margin-top:0.55rem !important;}.mr-55,.mx-55{margin-right:0.55rem !important;}.mb-55,.my-55{margin-bottom:0.55rem !important;}.ml-55,.mx-55{margin-left:0.55rem !important;}.m-60{margin:0.6rem !important;}.mt-60,.my-60{margin-top:0.6rem !important;}.mr-60,.mx-60{margin-right:0.6rem !important;}.mb-60,.my-60{margin-bottom:0.6rem !important;}.ml-60,.mx-60{margin-left:0.6rem !important;}.m-65{margin:0.65rem !important;}.mt-65,.my-65{margin-top:0.65rem !important;}.mr-65,.mx-65{margin-right:0.65rem !important;}.mb-65,.my-65{margin-bottom:0.65rem !important;}.ml-65,.mx-65{margin-left:0.65rem !important;}.m-70{margin:0.7rem !important;}.mt-70,.my-70{margin-top:0.7rem !important;}.mr-70,.mx-70{margin-right:0.7rem !important;}.mb-70,.my-70{margin-bottom:0.7rem !important;}.ml-70,.mx-70{margin-left:0.7rem !important;}.m-75{margin:0.75rem !important;}.mt-75,.my-75{margin-top:0.75rem !important;}.mr-75,.mx-75{margin-right:0.75rem !important;}.mb-75,.my-75{margin-bottom:0.75rem !important;}.ml-75,.mx-75{margin-left:0.75rem !important;}.m-80{margin:0.8rem !important;}.mt-80,.my-80{margin-top:0.8rem !important;}.mr-80,.mx-80{margin-right:0.8rem !important;}.mb-80,.my-80{margin-bottom:0.8rem !important;}.ml-80,.mx-80{margin-left:0.8rem !important;}.m-85{margin:0.85rem !important;}.mt-85,.my-85{margin-top:0.85rem !important;}.mr-85,.mx-85{margin-right:0.85rem !important;}.mb-85,.my-85{margin-bottom:0.85rem !important;}.ml-85,.mx-85{margin-left:0.85rem !important;}.m-90{margin:0.9rem !important;}.mt-90,.my-90{margin-top:0.9rem !important;}.mr-90,.mx-90{margin-right:0.9rem !important;}.mb-90,.my-90{margin-bottom:0.9rem !important;}.ml-90,.mx-90{margin-left:0.9rem !important;}.m-95{margin:0.95rem !important;}.mt-95,.my-95{margin-top:0.95rem !important;}.mr-95,.mx-95{margin-right:0.95rem !important;}.mb-95,.my-95{margin-bottom:0.95rem !important;}.ml-95,.mx-95{margin-left:0.95rem !important;}.m-100{margin:1rem !important;}.mt-100,.my-100{margin-top:1rem !important;}.mr-100,.mx-100{margin-right:1rem !important;}.mb-100,.my-100{margin-bottom:1rem !important;}.ml-100,.mx-100{margin-left:1rem !important;}/*枚举部分-内边距*/.p-5{padding:0.05rem !important;}.pt-5,.py-5{padding-top:0.05rem !important;}.pr-5,.px-5{padding-right:0.05rem !important;}.pb-5,.py-5{padding-bottom:0.05rem !important;}.pl-5,.px-5{padding-left:0.05rem !important;}.p-10{padding:0.1rem !important;}.pt-10,.py-10{padding-top:0.1rem !important;}.pr-10,.px-10{padding-right:0.1rem !important;}.pb-10,.py-10{padding-bottom:0.1rem !important;}.pl-10,.px-10{padding-left:0.1rem !important;}.p-15{padding:0.15rem !important;}.pt-15,.py-15{padding-top:0.15rem !important;}.pr-15,.px-15{padding-right:0.15rem !important;}.pb-15,.py-15{padding-bottom:0.15rem !important;}.pl-15,.px-15{padding-left:0.15rem !important;}.p-20{padding:0.2rem !important;}.pt-20,.py-20{padding-top:0.2rem !important;}.pr-20,.px-20{padding-right:0.2rem !important;}.pb-20,.py-20{padding-bottom:0.2rem !important;}.pl-20,.px-20{padding-left:0.2rem !important;}.p-25{padding:0.25rem !important;}.pt-25,.py-25{padding-top:0.25rem !important;}.pr-25,.px-25{padding-right:0.25rem !important;}.pb-25,.py-25{padding-bottom:0.25rem !important;}.pl-25,.px-25{padding-left:0.25rem !important;}.p-30{padding:0.3rem !important;}.pt-30,.py-30{padding-top:0.3rem !important;}.pr-30,.px-30{padding-right:0.3rem !important;}.pb-30,.py-30{padding-bottom:0.3rem !important;}.pl-30,.px-30{padding-left:0.3rem !important;}.p-35{padding:0.35rem !important;}.pt-35,.py-35{padding-top:0.35rem !important;}.pr-35,.px-35{padding-right:0.35rem !important;}.pb-35,.py-35{padding-bottom:0.35rem !important;}.pl-35,.px-35{padding-left:0.35rem !important;}.p-40{padding:0.4rem !important;}.pt-40,.py-40{padding-top:0.4rem !important;}.pr-40,.px-40{padding-right:0.4rem !important;}.pb-40,.py-40{padding-bottom:0.4rem !important;}.pl-40,.px-40{padding-left:0.4rem !important;}.p-45{padding:0.45rem !important;}.pt-45,.py-45{padding-top:0.45rem !important;}.pr-45,.px-45{padding-right:0.45rem !important;}.pb-45,.py-45{padding-bottom:0.45rem !important;}.pl-45,.px-45{padding-left:0.45rem !important;}.p-50{padding:0.5rem !important;}.pt-50,.py-50{padding-top:0.5rem !important;}.pr-50,.px-50{padding-right:0.5rem !important;}.pb-50,.py-50{padding-bottom:0.5rem !important;}.pl-50,.px-50{padding-left:0.5rem !important;}.p-55{padding:0.55rem !important;}.pt-55,.py-55{padding-top:0.55rem !important;}.pr-55,.px-55{padding-right:0.55rem !important;}.pb-55,.py-55{padding-bottom:0.55rem !important;}.pl-55,.px-55{padding-left:0.55rem !important;}.p-60{padding:0.6rem !important;}.pt-60,.py-60{padding-top:0.6rem !important;}.pr-60,.px-60{padding-right:0.6rem !important;}.pb-60,.py-60{padding-bottom:0.6rem !important;}.pl-60,.px-60{padding-left:0.6rem !important;}.p-65{padding:0.65rem !important;}.pt-65,.py-65{padding-top:0.65rem !important;}.pr-65,.px-65{padding-right:0.65rem !important;}.pb-65,.py-65{padding-bottom:0.65rem !important;}.pl-65,.px-65{padding-left:0.65rem !important;}.p-70{padding:0.7rem !important;}.pt-70,.py-70{padding-top:0.7rem !important;}.pr-70,.px-70{padding-right:0.7rem !important;}.pb-70,.py-70{padding-bottom:0.7rem !important;}.pl-70,.px-70{padding-left:0.7rem !important;}.p-75{padding:0.75rem !important;}.pt-75,.py-75{padding-top:0.75rem !important;}.pr-75,.px-75{padding-right:0.75rem !important;}.pb-75,.py-75{padding-bottom:0.75rem !important;}.pl-75,.px-75{padding-left:0.75rem !important;}.p-80{padding:0.8rem !important;}.pt-80,.py-80{padding-top:0.8rem !important;}.pr-80,.px-80{padding-right:0.8rem !important;}.pb-80,.py-80{padding-bottom:0.8rem !important;}.pl-80,.px-80{padding-left:0.8rem !important;}.p-85{padding:0.85rem !important;}.pt-85,.py-85{padding-top:0.85rem !important;}.pr-85,.px-85{padding-right:0.85rem !important;}.pb-85,.py-85{padding-bottom:0.85rem !important;}.pl-85,.px-85{padding-left:0.85rem !important;}.p-90{padding:0.9rem !important;}.pt-90,.py-90{padding-top:0.9rem !important;}.pr-90,.px-90{padding-right:0.9rem !important;}.pb-90,.py-90{padding-bottom:0.9rem !important;}.pl-90,.px-90{padding-left:0.9rem !important;}.p-95{padding:0.95rem !important;}.pt-95,.py-95{padding-top:0.95rem !important;}.pr-95,.px-95{padding-right:0.95rem !important;}.pb-95,.py-95{padding-bottom:0.95rem !important;}.pl-95,.px-95{padding-left:0.95rem !important;}.p-100{padding:1rem !important;}.pt-100,.py-100{padding-top:1rem !important;}.pr-100,.px-100{padding-right:1rem !important;}.pb-100,.py-100{padding-bottom:1rem !important;}.pl-100,.px-100{padding-left:1rem !important;}
