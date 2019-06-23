@@ -156,7 +156,7 @@ echo "/*枚举部分-字号*/$trans";
 $font_s=8;
 $font_e=20;
 for ($i=$font_s;$i<=$font_e;$i=$i+2) {
-	echo ".font".$i."{font-size:".$i*$times."px !important;}$trans";
+	echo ".font-".$i."{font-size:".$i*$times."px !important;}$trans";
 }
 echo "/*枚举部分-外边距*/$trans";  
 $s=5;
