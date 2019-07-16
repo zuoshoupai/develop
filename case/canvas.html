@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+	<head>
+	<title>刮刮乐效果</title>
+	</head>
+	<style>		.do{width:300px;height:150px;position:absolute;top:0;left:0;    font-size: 30px;font-weight: bold;color: red;line-height: 150px;text-align: center;}
+		#canvas{position:absolute;border:1px solid #000;top:0;left:0;z-index:2;}
+	</style>
+	<body>
+		<div class="do"></div>
+		<canvas id="canvas" width="300" height="150"></canvas>
+	</body>
+	<script>
+		window.onload=function(){
+			var canvas=document.getElementById('canvas');
+			var ctx=canvas.getContext("2d");
+			//ctx.lineWidth=5;
+			//ctx.strokeStyle='blue';
+			//ctx.moveTo(0,0);
+			//ctx.lineTo(100,100);
+			//ctx.lineTo(200,100);
+			<!-- canvas.onclick=function(e){ -->
+				<!-- ctx.lineTo(e.clientX,e.clientY); -->
+				<!-- ctx.stroke(); -->
+			<!-- } -->
+			//执行画线
+			//ctx.stroke();
+			var prize=['一等奖','二等奖','谢谢惠顾'];
+			var op=document.querySelector('.do');
+			var len=prize.length;
+			var i=Math.floor(Math.random()*len); 
+			op.innerText=prize[i];
+			//绘制矩形
+			ctx.rect(0,0,300,150);
+			ctx.fillStyle='#ababab';
+			ctx.fill();
+			//鼠标按下触发擦除事件
+			window.onmousedown=function(){
+				window.onmousemove=function(e){
+					ctx.clearRect(e.clientX,e.clientY,10,10); 
+				}
+			}
+			//鼠标弹起清除擦除事件
+			window.onmouseup=function(){
+				window.onmousemove=null;
+			} 
+		}
+	</script>
+</html>
