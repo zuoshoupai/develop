@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<title>行走的小人</title>
+</head>
+<style>
+.main{width: 679px;
+    height: 425px; 
+	position:absolute;
+    background-image: url(timg.jpg);
+	left:0;top:0;z-index:1}
+img{display:none;}
+.btn{    position: absolute;
+    top: 0;
+    right: 20px;
+    font-size: 20px;
+    color: red;
+    font-weight: bold;}
+.btn a{}
+</style>
+<body>
+<div class="main">
+	<canvas width="679" height="425" id="mycanvas"></canvas>
+	<p class="btn">
+		<a id="start">开始</a>
+		<a id="stop">暂停</a>
+	</p>
+</div>
+<img src="person.png"  id="person" width="25" height="47" />
+</body>
+<script>
+window.onload=function(){
+	var timer,flag=true,speed=20,speedX,speedY,footX=1,footY=1,footZ;
+	var foot=[{'x':0,'y':0},{'x':630,'y':370}];
+	var mycanvas=document.getElementById("mycanvas");
+	var ctx=mycanvas.getContext("2d");
+	var img=document.getElementById("person"); 
+	ctx.drawImage(img,0,0,25,47);
+	document.getElementById('start').onclick=function(e){ 
+		e.stopPropagation();
+		start();
+	}
+	document.getElementById('stop').onclick=function(e){ 
+		e.stopPropagation();
+		stop();
+	}
+	var myop=document.querySelector('.main');
+	
+	myop.onclick=function(e){ 
+		if(flag){
+			foot[1].x=e.clientX;
+			foot[1].y=e.clientY;
+			start();
+		}
+		e.stopPropagation();
+	}
+	
+	function start(){
+		if(flag){
+			flag=false;
+		}else{
+			return;
+		}
+		if(foot[0].x<=foot[1].x){
+			footX=1;
+		}else{
+			footX=-1;
+		}
+		if(foot[0].y<=foot[1].y){
+			footY=1;
+		}else{
+			footY=-1;
+		} 
+		footZ=Math.sqrt((foot[0].x-foot[1].x)*(foot[0].x-foot[1].x)+(foot[0].y-foot[1].y)*(foot[0].y-foot[1].y)); 
+		speedX=speed*(foot[1].x-foot[0].x)/footZ;
+		speedY=speed*(foot[1].y-foot[0].y)/footZ; 
+		timer=setInterval(function(){
+			run();
+		},500)
+	}
+	function stop(){
+		flag=true;
+		clearInterval(timer);
+	}
+	function run(){ 
+		ctx.clearRect(0,0,mycanvas.width,mycanvas.height);
+		if(foot[0].x*footX<foot[1].x*footX){ 
+			foot[0].x+=speedX;
+		}
+		if(foot[0].y*footY<foot[1].y*footY){ 
+			foot[0].y+=speedY;
+		} 
+		console.log(foot[0]);
+		ctx.drawImage(img,foot[0].x,foot[0].y,25,47);
+		if(foot[0].y*footY>=foot[1].y*footY && foot[0].x*footX>=foot[1].x*footX){
+			stop();
+		}
+	}
+}
+</script>
+</html>
