@@ -19,11 +19,13 @@
     .row div:last-child{border-right:1px solid #000;}
     .sbtn{position: absolute;top:6rem;width: 100%;}
     .sbtn button{text-align: center;font-size:.4rem;color: blue;font-weight: bold;    padding: 5px 10px;position: absolute;left: 0; right: 0;margin: 0 auto;width:3.5rem;}
+    .score{    position: fixed;top: 10px;right: 10px;color: red;font-size: .3rem;} 
 </style>
 <body>
     <div class="wrap">
         <div class="main"></div>
         <div class="sbtn"><button>start game</button></div>
+        <div class="score">score:0</div>
     </div>
 </body>
 </html>
@@ -71,7 +73,7 @@
                 }
                
             }  
-            if(len>6){
+            if(len>8){
                 main.removeChild(main.childNodes[len-1]);
             }
         },20) 
@@ -85,6 +87,7 @@
                     target.classList.remove('c');
                     target.style.background='#ababab';
                     num++;
+                    document.querySelector('.score').innerHTML='score:'+num;
                     if(num%20==0){
                         speed+=3;
                     }
