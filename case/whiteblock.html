@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>别踩白块</title>
+</head>
+<style>
+    .wrap{width: 100%;max-width: 890px;
+    height: 600px;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);}
+    .main{width:100%;height: 600px;position: relative; top:-150px;}
+    .row{width:100%}
+    .row div{width:25%;height:150px;box-sizing:border-box;border-left:1px solid #000;border-bottom:1px solid #000;float:left;}
+    .row div:last-child{border-right:1px solid #000;}
+    .sbtn{position: absolute;top: 300px;width: 100%;}
+    .sbtn button{text-align: center;font-size: 35px;color: blue;font-weight: bold;    padding: 5px 10px;position: absolute;left: 0; right: 0;margin: 0 auto;width: 260px;}
+</style>
+<body>
+    <div class="wrap">
+        <div class="main"></div>
+        <div class="sbtn"><button>start game</button></div>
+    </div>
+</body>
+</html>
+<script> 
+    var timer,game=true,speed=2,num=0;
+    var main=document.querySelector('.main'); 
+    var color=['red','blue','green','pink'];
+    function cDiv(){ 
+        var rDiv=document.createElement('div');
+        rDiv.setAttribute('class','row');
+        for(var i=0;i<4;i++){
+            var mDiv=document.createElement('div');
+            rDiv.appendChild(mDiv);
+        }
+        var index=parseInt(Math.floor(Math.random()*4));
+
+        rDiv.childNodes[index].style.background=color[index];
+        rDiv.childNodes[index].setAttribute('class','c');
+        if(main.childNodes.length>0){
+            main.insertBefore(rDiv,main.childNodes[0])
+        }else{
+            main.appendChild(rDiv); 
+        }
+        
+    }
+    function move(){ 
+        timer=setInterval(function(){ 
+            if(main.offsetTop>0){
+                cDiv(); 
+                main.style.top='-150px';
+            }else{
+                var step=parseInt(main.offsetTop)+speed; 
+                main.style.top=step+'px';
+            }  
+            var len=main.childNodes.length;
+            if(len>5){
+                for(var i=0;i<4;i++){
+                    if(main.childNodes[len-1].children[i].classList.contains('c')){
+                        alert('game over,score:'+num);
+                        clearInterval(timer);
+                        game=false;
+                        return false;
+                        
+                    }
+                }
+                main.removeChild(main.childNodes[len-1]);
+            }  
+        },50) 
+        binadEvent();
+    }
+    function binadEvent(){ 
+        main.addEventListener('click',function(e){
+            if(game){
+                var target=e.target;
+                if(target.classList.contains('c')){
+                    target.classList.remove('c');
+                    target.style.background='#ababab';
+                    num++;
+                    if(num%20==0){
+                        speed+=2;
+                    }
+                }else{
+                    alert('game over,score:'+num);
+                    clearInterval(timer);
+                    game=false;
+                    return false; 
+                }
+            }
+        }) 
+    }
+
+    function start_game(){
+        document.querySelector('.sbtn button').addEventListener('click',function(){
+            document.querySelector('.sbtn').style.display='none';
+            move();
+        }) 
+    }  
+    start_game();
+        
+</script>
