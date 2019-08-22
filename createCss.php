@@ -177,7 +177,7 @@ for($i=$s;$i<=$e;$i=$i+$step){
 }
 echo "/*枚举部分-内边距*/$trans";  
 $s=2;
-$step=2;
+$step=2/$add;
 $e=50;
 for($i=$s;$i<=$e;$i=$i+$step){
 	echo ".p-".$i*$add."{padding:".$i*$times.$extra." !important;}$trans";
