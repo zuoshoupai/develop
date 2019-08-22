@@ -30,12 +30,10 @@ if(!isset($_POST['scene'])){
 }
 function create_css($scene,$compress){
 	//$compress=false;//是否压缩
-	//$scene = 'pc';
-	$add=1;
+	//$scene = 'pc'; 
 	if($scene=='wechat'){
 		$extra = 'rpx';//应用场景单位
-		$times = 2;
-		$add=2;
+		$times = 1; 
 	}elseif($scene=='web'){
 		$extra = 'rem';//应用场景单位
 		$times = 0.01;
@@ -166,25 +164,25 @@ for ($i=$font_s;$i<=$font_e;$i=$i+1) {
 }
 echo "/*枚举部分-外边距*/$trans";  
 $s=2;
-$step=2/$add;
-$e=50;
+$step=2;
+$e=60;
 for($i=$s;$i<=$e;$i=$i+$step){
-	echo ".m-".$i*$add."{margin:".$i*$times.$extra." !important;}$trans";
-	echo ".mt-".$i*$add.",.my-".$i*$add."{margin-top:".$i*$times.$extra." !important;}$trans";
-	echo ".mr-".$i*$add.",.mx-".$i*$add."{margin-right:".$i*$times.$extra." !important;}$trans";
-	echo ".mb-".$i*$add.",.my-".$i*$add."{margin-bottom:".$i*$times.$extra." !important;}$trans";
-	echo ".ml-".$i*$add.",.mx-".$i*$add."{margin-left:".$i*$times.$extra." !important;}$trans";   
+	echo ".m-".$i."{margin:".$i*$times.$extra." !important;}$trans";
+	echo ".mt-".$i.",.my-".$i."{margin-top:".$i*$times.$extra." !important;}$trans";
+	echo ".mr-".$i.",.mx-".$i."{margin-right:".$i*$times.$extra." !important;}$trans";
+	echo ".mb-".$i.",.my-".$i."{margin-bottom:".$i*$times.$extra." !important;}$trans";
+	echo ".ml-".$i.",.mx-".$i."{margin-left:".$i*$times.$extra." !important;}$trans";   
 }
 echo "/*枚举部分-内边距*/$trans";  
 $s=2;
-$step=2/$add;
-$e=50;
+$step=2;
+$e=60;
 for($i=$s;$i<=$e;$i=$i+$step){
-	echo ".p-".$i*$add."{padding:".$i*$times.$extra." !important;}$trans";
-	echo ".pt-".$i*$add.",.py-".$i*$add."{padding-top:".$i*$times.$extra." !important;}$trans";
-	echo ".pr-".$i*$add.",.px-".$i*$add."{padding-right:".$i*$times.$extra." !important;}$trans";
-	echo ".pb-".$i*$add.",.py-".$i*$add."{padding-bottom:".$i*$times.$extra." !important;}$trans";
-	echo ".pl-".$i*$add.",.px-".$i*$add."{padding-left:".$i*$times.$extra." !important;}$trans";   	
+	echo ".p-".$i."{padding:".$i*$times.$extra." !important;}$trans";
+	echo ".pt-".$i.",.py-".$i."{padding-top:".$i*$times.$extra." !important;}$trans";
+	echo ".pr-".$i.",.px-".$i."{padding-right:".$i*$times.$extra." !important;}$trans";
+	echo ".pb-".$i.",.py-".$i."{padding-bottom:".$i*$times.$extra." !important;}$trans";
+	echo ".pl-".$i.",.px-".$i."{padding-left:".$i*$times.$extra." !important;}$trans";   	
 } 
 }
 
