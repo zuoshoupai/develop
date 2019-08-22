@@ -54,6 +54,7 @@ echo "/*弹性布局*/$trans
 .d-block{display: block}$trans
 .d-inline-block{display: inline-block !important}$trans
 .d-flex{display:flex !important;}$trans
+.flex-1{flex:1}$trans
 .flex-row{flex-direction: row !important}$trans
 .flex-column{flex-direction:column !important}$trans
 .justify-content-start{justify-content: flex-start !important}$trans
@@ -93,7 +94,7 @@ legend {color:#000;}$trans
 fieldset, img {border:0;}$trans
 button, input, select, textarea {font-size:100%;}$trans
 table {border-collapse:collapse;border-spacing:0;}$trans
-img{max-width: 100%;max-height: 100%;}$trans
+img,image{max-width: 100%;max-height: 100%;}$trans
 .float-left{float:left !important;}$trans
 .float-right{float:right !important;}$trans
 .full-width{width:100% !important }$trans
@@ -159,11 +160,11 @@ echo "/*枚举部分-字号*/$trans";
 $font_s=10;
 $font_e=30;
 for ($i=$font_s;$i<=$font_e;$i=$i+1) {
-	echo ".font-".$i."{font-size:".$i*$times."px !important;}$trans";
+	echo ".font-".$i."{font-size:".$i."px !important;}$trans";
 }
 echo "/*枚举部分-外边距*/$trans";  
 $s=2;
-$step=2;
+$step=2/$times;
 $e=50;
 for($i=$s;$i<=$e;$i=$i+$step){
 	echo ".m-".$i*$times."{margin:".$i*$times.$extra." !important;}$trans";
