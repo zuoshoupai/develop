@@ -62,6 +62,9 @@ echo "/*弹性布局*/$trans
 .justify-content-between{justify-content: space-between !important}$trans
 .justify-content-around{justify-content: space-around !important;}$trans
 .align-items-center{align-items:center !important;}$trans
+.align-items-center{align-items:center !important;}$trans
+.align-items-start{align-items: flex-start !important;}$trans
+.align-items-end{align-items: flex-end !important;}$trans
 .flex-wrap{flex-wrap: wrap !important;}$trans
 $trans/* 拓展设置  需要自定义*/$trans
 .color0{color:#000 !important;}$trans
@@ -153,32 +156,32 @@ if(!$compress){
 	$trans="\r\n";
 } 
 echo "/*枚举部分-字号*/$trans"; 
-$font_s=8;
-$font_e=20;
-for ($i=$font_s;$i<=$font_e;$i=$i+2) {
+$font_s=10;
+$font_e=30;
+for ($i=$font_s;$i<=$font_e;$i=$i+1) {
 	echo ".font-".$i."{font-size:".$i*$times."px !important;}$trans";
 }
 echo "/*枚举部分-外边距*/$trans";  
-$s=5;
-$step=5;
-$e=100;
+$s=2;
+$step=2;
+$e=50;
 for($i=$s;$i<=$e;$i=$i+$step){
-	echo ".m-".$i."{margin:".$i*$times.$extra." !important;}$trans";
-	echo ".mt-".$i.",.my-".$i."{margin-top:".$i*$times.$extra." !important;}$trans";
-	echo ".mr-".$i.",.mx-".$i."{margin-right:".$i*$times.$extra." !important;}$trans";
-	echo ".mb-".$i.",.my-".$i."{margin-bottom:".$i*$times.$extra." !important;}$trans";
-	echo ".ml-".$i.",.mx-".$i."{margin-left:".$i*$times.$extra." !important;}$trans";   
+	echo ".m-".$i*$times."{margin:".$i*$times.$extra." !important;}$trans";
+	echo ".mt-".$i*$times.",.my-".$i*$times."{margin-top:".$i*$times.$extra." !important;}$trans";
+	echo ".mr-".$i*$times.",.mx-".$i*$times."{margin-right:".$i*$times.$extra." !important;}$trans";
+	echo ".mb-".$i*$times.",.my-".$i*$times."{margin-bottom:".$i*$times.$extra." !important;}$trans";
+	echo ".ml-".$i*$times.",.mx-".$i*$times."{margin-left:".$i*$times.$extra." !important;}$trans";   
 }
 echo "/*枚举部分-内边距*/$trans";  
-$s=5;
-$step=5;
-$e=100;
+$s=2;
+$step=2;
+$e=50;
 for($i=$s;$i<=$e;$i=$i+$step){
-	echo ".p-".$i."{padding:".$i*$times.$extra." !important;}$trans";
-	echo ".pt-".$i.",.py-".$i."{padding-top:".$i*$times.$extra." !important;}$trans";
-	echo ".pr-".$i.",.px-".$i."{padding-right:".$i*$times.$extra." !important;}$trans";
-	echo ".pb-".$i.",.py-".$i."{padding-bottom:".$i*$times.$extra." !important;}$trans";
-	echo ".pl-".$i.",.px-".$i."{padding-left:".$i*$times.$extra." !important;}$trans";   	
+	echo ".p-".$i*$times."{padding:".$i*$times.$extra." !important;}$trans";
+	echo ".pt-".$i*$times.",.py-".$i*$times."{padding-top:".$i*$times.$extra." !important;}$trans";
+	echo ".pr-".$i*$times.",.px-".$i*$times."{padding-right:".$i*$times.$extra." !important;}$trans";
+	echo ".pb-".$i*$times.",.py-".$i*$times."{padding-bottom:".$i*$times.$extra." !important;}$trans";
+	echo ".pl-".$i*$times.",.px-".$i*$times."{padding-left:".$i*$times.$extra." !important;}$trans";   	
 } 
 }
 
