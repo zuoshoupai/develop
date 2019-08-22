@@ -166,7 +166,7 @@ for ($i=$font_s;$i<=$font_e;$i=$i+1) {
 }
 echo "/*枚举部分-外边距*/$trans";  
 $s=2;
-$step=2/$times;
+$step=2/$add;
 $e=50;
 for($i=$s;$i<=$e;$i=$i+$step){
 	echo ".m-".$i*$add."{margin:".$i*$times.$extra." !important;}$trans";
