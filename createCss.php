@@ -157,7 +157,7 @@ if(!$compress){
 	$trans="\r\n";
 } 
 echo "/*枚举部分-字号*/$trans"; 
-$font_s=10;
+$font_s=8;
 $font_e=30;
 for ($i=$font_s;$i<=$font_e;$i=$i+1) {
 	echo ".font-".$i."{font-size:".$i."px !important;}$trans";
@@ -165,7 +165,7 @@ for ($i=$font_s;$i<=$font_e;$i=$i+1) {
 echo "/*枚举部分-外边距*/$trans";  
 $s=2;
 $step=2;
-$e=60;
+$e=80;
 for($i=$s;$i<=$e;$i=$i+$step){
 	echo ".m-".$i."{margin:".$i*$times.$extra." !important;}$trans";
 	echo ".mt-".$i.",.my-".$i."{margin-top:".$i*$times.$extra." !important;}$trans";
@@ -176,7 +176,7 @@ for($i=$s;$i<=$e;$i=$i+$step){
 echo "/*枚举部分-内边距*/$trans";  
 $s=2;
 $step=2;
-$e=60;
+$e=80;
 for($i=$s;$i<=$e;$i=$i+$step){
 	echo ".p-".$i."{padding:".$i*$times.$extra." !important;}$trans";
 	echo ".pt-".$i.",.py-".$i."{padding-top:".$i*$times.$extra." !important;}$trans";
