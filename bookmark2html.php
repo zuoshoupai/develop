@@ -32,7 +32,10 @@
 			<fieldset>
 				<legend>Ps:</legend>
 				<div class="form-group">
-					选择 
+					1.打开浏览器书签管理<br>
+					2.导出为html<br>
+					3.使用本页面上传提交即生成html源码<br>
+					4.测试兼容火狐与谷歌浏览器<br>
 				</div> 
 			</fieldset>
 			<?php
