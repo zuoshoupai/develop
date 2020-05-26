@@ -1,7 +1,7 @@
 <?php 
 /**
-describe:去掉绝对定位的枚举，节省空间；类名向bootstrap靠拢，方便过渡
-date:2019-06-03
+describe:去掉绝对定位的枚举，节省空间；类名向bootstrap靠拢，方便过渡,加入默认颜色背景
+date:2020-5-26
 author:zane
 **/
 if(!isset($_POST['scene'])){
@@ -62,12 +62,29 @@ echo "/*弹性布局*/$trans
 .justify-content-center{justify-content:center !important}$trans
 .justify-content-between{justify-content: space-between !important}$trans
 .justify-content-around{justify-content: space-around !important;}$trans
-.align-items-center{align-items:center !important;}$trans
-.align-items-center{align-items:center !important;}$trans
+.align-items-center{align-items:center !important;}$trans 
 .align-items-start{align-items: flex-start !important;}$trans
 .align-items-end{align-items: flex-end !important;}$trans
 .flex-wrap{flex-wrap: wrap !important;}$trans
 $trans/* 拓展设置  需要自定义*/$trans
+.text-white{color:#fff!important}$trans
+.text-primary{color:#007bff!important}$trans 
+.text-secondary{color:#6c757d!important}$trans 
+.text-success{color:#28a745!important}$trans 
+.text-info{color:#17a2b8!important}$trans 
+.text-warning{color:#ffc107!important}$trans 
+.text-danger{color:#dc3545!important}$trans 
+.text-light{color:#f8f9fa!important}$trans 
+.text-dark{color:#343a40!important}$trans 
+.bg-white{background-color:#fff!important}$trans
+.bg-primary{background-color:#007bff!important}$trans 
+.bg-secondary{background-color:#6c757d!important}$trans 
+.bg-success{background-color:#28a745!important}$trans 
+.bg-info{background-color:#17a2b8!important}$trans 
+.bg-warning{background-color:#ffc107!important}$trans 
+.bg-danger{background-color:#dc3545!important}$trans 
+.bg-light{background-color:#f8f9fa!important}$trans 
+.bg-dark{background-color:#343a40!important}$trans 
 .color0{color:#000 !important;}$trans
 .color3{color:#333 !important;}$trans
 .color6{color:#666 !important;}$trans

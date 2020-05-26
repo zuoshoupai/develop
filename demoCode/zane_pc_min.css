@@ -13,12 +13,29 @@
 .justify-content-center{justify-content:center !important}
 .justify-content-between{justify-content: space-between !important}
 .justify-content-around{justify-content: space-around !important;}
-.align-items-center{align-items:center !important;}
-.align-items-center{align-items:center !important;}
+.align-items-center{align-items:center !important;} 
 .align-items-start{align-items: flex-start !important;}
 .align-items-end{align-items: flex-end !important;}
 .flex-wrap{flex-wrap: wrap !important;}
 /* 拓展设置  需要自定义*/
+.text-white{color:#fff!important}
+.text-primary{color:#007bff!important} 
+.text-secondary{color:#6c757d!important} 
+.text-success{color:#28a745!important} 
+.text-info{color:#17a2b8!important} 
+.text-warning{color:#ffc107!important} 
+.text-danger{color:#dc3545!important} 
+.text-light{color:#f8f9fa!important} 
+.text-dark{color:#343a40!important} 
+.bg-white{background-color:#fff!important}
+.bg-primary{background-color:#007bff!important} 
+.bg-secondary{background-color:#6c757d!important} 
+.bg-success{background-color:#28a745!important} 
+.bg-info{background-color:#17a2b8!important} 
+.bg-warning{background-color:#ffc107!important} 
+.bg-danger{background-color:#dc3545!important} 
+.bg-light{background-color:#f8f9fa!important} 
+.bg-dark{background-color:#343a40!important} 
 .color0{color:#000 !important;}
 .color3{color:#333 !important;}
 .color6{color:#666 !important;}
