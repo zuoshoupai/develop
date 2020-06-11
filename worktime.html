@@ -64,8 +64,7 @@ new Vue({
     },
     computed: {  
         sums: function () {  
-            var t=0,l=this.list;
-            console.log(l);
+            var t=0,l=this.list; 
             for(let i=0;i<l.length;i++){
                 t+=Math.round((l[i].total)/(l[i].per));
             }
