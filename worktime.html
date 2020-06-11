@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.5.0/vue.min.js"></script>
+    <title>工期预算</title>
+</head>
+<style>
+    #app{    width: 98%;
+    max-width: 750px;
+    margin: 10px auto;
+    font-size: 16px;}
+    #app table{    width: 100%;
+    text-align: center;}
+    input{width:100%;border:none;}
+</style>
+<body>
+    <div id="app">
+    <table border="1" cellspacing="0" cellpadding="0">
+        <tr>
+            <td colspan="5">开发工期预算</td>
+        </tr>
+        <tr>
+            <td style="width:10%">类目 </td>
+            <td style="width:40%" >描述</td>
+            <td style="width:10%">总量 </td>
+            <td style="width:20%">日完成 </td>
+            <td style="width:20%">所需时长(工作日) </td>
+        </tr> 
+        <tr v-for="item in list">
+            <td>{{item.name}}
+            </td>
+            <td>{{item.des}}
+            </td>
+            <td><input type="text" v-model.number="item.total" /> </td>
+            <td><input type="text" v-model.number="item.per" /></td>
+            <td>{{Math.round(item.total/item.per)}} </td>
+        </tr>
+        <tr >
+            <td colspan="3">
+            </td>
+            <td>合计
+            </td>
+            <td>{{sums}}</td>
+        </tr>
+    </table>
+</div>
+</body>
+<script>
+new Vue({
+    el: '#app',
+    data:{  
+        list: [
+            {name:'数据库设计',des:'设计表，字段',total:30,per:10,use:0},
+            {name:'工具选择',des:'前后端框架选择，思维导图',total:1,per:1,use:0},	
+            {name:'前端布局',des:'html+css布局页面',total:20,per:2,use:0},	
+            {name:'页面数据渲染',des:'页面数据动态渲染',total:20,per:3,use:0},	
+            {name:'数据输出 ',des:'接口输出，页面输出',total:20,per:3,use:0},
+            {name:'报表统计 ',des:'统计数据，导出表单',total:3,per:2,use:0},	
+            {name:'接口调试 ',des:'三方登录，支付，调用等',total:3,per:1,use:0},	
+            {name:'技术难点 ',des:'直播，文件转存，格式转换，定时处理等',total:1,per:1,use:0},		 
+        ]
+    },
+    computed: {  
+        sums: function () {  
+            var t=0,l=this.list;
+            console.log(l);
+            for(let i=0;i<l.length;i++){
+                t+=Math.round((l[i].total)/(l[i].per));
+            }
+            return t;
+        }  
+    }, 
+    methods:{
+        
+    }
+}); 
+</script>
+</html>
