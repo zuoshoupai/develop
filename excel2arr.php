@@ -49,17 +49,17 @@ for ($i = 1;$i < count($sheetArr);$i ++)
         );
     }
 }   
-$output.="array(\n";
+$output.='$return=array('."\n";
 foreach($row as $k=>$v){ 
     $output.="'$k'=>array(";
     foreach($v as $kk=>$vv){ 
         $output.='\''.$kk."'=>'".$vv.'\','; 
     }
     $output=trim($output,',');
-    $output.=")，\n"; 
+    $output.="),\n"; 
 }
-$output=trim($output,"，\n");
-$output.="\n)";
+$output=trim($output,",\n");
+$output.="\n);";
 $first=true;
 }
 ?>
