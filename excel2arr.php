@@ -1,6 +1,7 @@
 <?php
 $first=false;
 if(isset($_FILES['file']['name'])){
+  $op=$_POST['todo']==1?1:2;
    $temp_name=$_FILES['file']['tmp_name'];
    $size=$_FILES['file']['size'];
    if($size>2*1024*1024){
@@ -29,37 +30,81 @@ $output=<<<EOF
     * key13:{$sheetArr[0][12]}
 */\n\n
 EOF;
-for ($i = 1;$i < count($sheetArr);$i ++)
-{
-    if(!empty($sheetArr[$i][3])){
-        $row['DATA_'.$sheetArr[$i][3]]=array(
-            'key1'=>$sheetArr[$i][0],
-            'key2'=>$sheetArr[$i][1],
-            'key3'=>$sheetArr[$i][2],
-            'key4'=>'DATA_'.$sheetArr[$i][3],
-            'key5'=>$sheetArr[$i][4],
-            'key6'=>$sheetArr[$i][5],
-            'key7'=>$sheetArr[$i][6],
-            'key8'=>$sheetArr[$i][7],
-            'key9'=>$sheetArr[$i][8],
-            'key10'=>$sheetArr[$i][9],
-            'key11'=>$sheetArr[$i][10],
-            'key12'=>$sheetArr[$i][11],
-            'key13'=>$sheetArr[$i][12],
-        );
+if($op==2){
+    for ($i = 1;$i < count($sheetArr);$i ++)
+    { 
+        if(!empty(trim($sheetArr[$i][3]))){
+            $row[trim($sheetArr[$i][0])][trim($sheetArr[$i][2])]=array(
+                'key1'=>trim($sheetArr[$i][0]),
+                'key2'=>trim($sheetArr[$i][1]),
+                'key3'=>trim($sheetArr[$i][2]),
+                'key4'=>trim('DATA_'.$sheetArr[$i][3]),
+                'key5'=>trim($sheetArr[$i][4]),
+                'key6'=>$sheetArr[$i][5],
+                'key7'=>$sheetArr[$i][6],
+                'key8'=>$sheetArr[$i][7],
+                'key9'=>$sheetArr[$i][8],
+                'key10'=>$sheetArr[$i][9],
+                'key11'=>$sheetArr[$i][10],
+                'key12'=>$sheetArr[$i][11],
+                'key13'=>$sheetArr[$i][12],
+            );
+        }
+    }   
+    $output.='$return=array('."\n";
+    foreach($row as $k=>$v){ 
+        $output.="\t'$k'=>array(\n";
+        foreach($v as $kk=>$vv){ 
+            if(is_array($vv)){
+                $output.="\t\t'$kk'=>array(\n\t\t\t";
+                foreach($vv as $kkk=>$vvv){ 
+                    $output.='\''.$kkk."'=>'".$vvv.'\','; 
+                }
+                $output=trim($output,',');
+                $output.="),\n"; 
+            }else{
+                $output.='\''.$kk."'=>'".$vv.'\','; 
+            }
+            
+        }
+        $output=trim($output,",\n\t\t");
+        $output.="),\n"; 
     }
-}   
-$output.='$return=array('."\n";
-foreach($row as $k=>$v){ 
-    $output.="'$k'=>array(";
-    foreach($v as $kk=>$vv){ 
-        $output.='\''.$kk."'=>'".$vv.'\','; 
+    $output=trim($output,",\n");
+    $output.="\n);";
+}else{
+    for ($i = 1;$i < count($sheetArr);$i ++)
+    {
+        if(!empty($sheetArr[$i][3])){
+            $row['DATA_'.trim($sheetArr[$i][3])]=array(
+                'key1'=>trim($sheetArr[$i][0]),
+                'key2'=>trim($sheetArr[$i][1]),
+                'key3'=>trim($sheetArr[$i][2]),
+                'key4'=>'DATA_'.trim($sheetArr[$i][3]),
+                'key5'=>trim($sheetArr[$i][4]),
+                'key6'=>$sheetArr[$i][5],
+                'key7'=>$sheetArr[$i][6],
+                'key8'=>$sheetArr[$i][7],
+                'key9'=>$sheetArr[$i][8],
+                'key10'=>$sheetArr[$i][9],
+                'key11'=>$sheetArr[$i][10],
+                'key12'=>$sheetArr[$i][11],
+                'key13'=>$sheetArr[$i][12],
+            );
+        }
+    }   
+    $output.='$return=array('."\n";
+    foreach($row as $k=>$v){ 
+        $output.="\t'$k'=>array(";
+        foreach($v as $kk=>$vv){ 
+            $output.='\''.$kk."'=>'".$vv.'\','; 
+        }
+        $output=trim($output,',');
+        $output.="),\n"; 
     }
-    $output=trim($output,',');
-    $output.="),\n"; 
+    $output=trim($output,",\n");
+    $output.="\n);";
 }
-$output=trim($output,",\n");
-$output.="\n);";
 $first=true;
 }
 ?>
@@ -72,7 +117,7 @@ $first=true;
 	.contain{width: 99%;margin: 20px auto;max-width: 700px;}
 	div,form{font-size:20px;}
 	form{width:99%;margin:0 auto}
-	form  input{width:100%;height: 40px;margin:0;padding:0}
+	form  input,select{width:100%;height: 40px;margin:0;padding:0}
 	.group{margin-bottom:20px;}
 	.form-group{margin-bottom: 10px;overflow: hidden;font-size: 15px;}
 	.form-group label{width:160px;display: block;float: left;}
@@ -91,6 +136,12 @@ $first=true;
 		<form method="post" enctype="multipart/form-data">
 			<div style="border-right:4px solid #fff;">
 				<input name="file" type="file" placeholder="please input your the website" />
+			</div>
+            <div style="border-right:4px solid #fff;">
+				<select name="todo" >
+					<option value="1">oa to erp
+					<option value="2">erp to oa
+				</select>
 			</div>
 			<input class="group" type="submit" value="submit"/> 
 			<fieldset>
