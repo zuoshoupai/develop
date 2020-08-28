@@ -195,9 +195,9 @@
 
         var html = '';
         $('#tableContent').html('')
-        for (rowIndex = 1; rowIndex < row; rowIndex++) { //多少行
+        for (rowIndex = 1; rowIndex <=row; rowIndex++) { //多少行
             html += "\n\t<tr>"
-            for (let columnIndex = 1; columnIndex < column; columnIndex++) {
+            for (let columnIndex = 1; columnIndex <= column; columnIndex++) {
                 html += "\n\t\t<td data-row=\"" + rowIndex + "\" data-column=\"" + columnIndex + "\" >行" + rowIndex + "-列" + columnIndex + "</td>";
             }
             html += "\n\t</tr>";
