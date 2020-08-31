@@ -95,15 +95,34 @@
 			</ul>
 		</div>
 		<div class="top">
-		行数:<input type="text" class='row' value='9'>
-		列数:<input type="text" class='column' value='9'>
-		<input type="button" value="确定" id="button">
-		</div>
-		<div id='table' style="margin:0 auto;"><table id='tableContent'></table>
+		 <div class="col-5">
+			<div class="input-group">
+			  <span class="input-group-btn">
+				<button class="btn btn-default" type="button">行数:</button>
+			  </span>
+			  <input type="text" class="form-control rows" value='9' >
+			</div><!-- /input-group -->
+		  </div><!-- /.col-lg-6 --> 
+		  <div class="col-5">
+			<div class="input-group">
+			  <span class="input-group-btn">
+				<button class="btn btn-default" type="button">列数:</button>
+			  </span>
+			  <input type="text" class="form-control column" value='9' >
+			</div><!-- /input-group -->
+		  </div><!-- /.col-lg-6 --> 
+		  <div class="col-2">
+		  <input type="button" class="form-control" value="确定" id="button">
+		  </div>
+		</div> 
+		 
+		<div id='table' style="margin:0 auto;">
+<table id='tableContent' >
+</table>
 		</div>
 	</div>
 	<div class="container" id="app">
-		<button id="showCode">获取代码</button>
+		<button id="showCode">Create&Copy</button>
 		<textarea id="s">
 		
 		</textarea>
@@ -185,9 +204,10 @@
         })
         
     }
-
+$(function(){
+	$('#tableContent').attr('contenteditable',"true");
     $('#button').click(function () {
-        var row = $('.row').val()
+        var row = $('.rows').val()
         var column = $('.column').val()
         if (!row || !column || row == 0 || column == 0) {
             alert('行或列不能为空')
@@ -256,8 +276,13 @@
 	$('#showCode').click(function(){ 
 	    var h=$('#table').html(); 
 		h=h.replace(/data-row=\"\d\"\sdata-column=\"\d\"/g,'');
-		$('#s').val(h);
+		h=h.replace('id="tableContent" contenteditable="true"','');
+		$('#s').val(h); 
+		var i= document.querySelector('#s'); 
+		i.select();
+		document.execCommand("copy"); 
 	})
+})
 </script>
 
 
