@@ -1,289 +1,186 @@
 <!DOCTYPE html>
-<html lang="">
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Title Page</title>
-
-    <!-- Bootstrap CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <title>创建表格</title>
 </head>
-<style>
-    html,
-    body {
-        height: 100%;
-    }
-
-    * {
-        margin: 0;
-        padding: 0;
-    }
-	table{  
-        width: 100%;
-        border-width: 1px;
-        border-color: #000;
-        border-collapse: collapse;
-    } 
-    table.tftable tr {
-        background-color: #ffffff;
-    } 
-    td {
-	    text-align:center;
-        font-size: 12px;
-        border-width: 1px;
-        padding:0;
-        border-style: solid;
-        border-color: #000;
-		height: 36px;
-        overflow: hidden;
-    }
-	.top{    display: flex;
+<style> 
+    * {margin: 0; padding: 0;}
+    .container{width: 90%;max-width: 960px;margin: 0 auto;margin-top: 25px;}
+	 table{width: 100%;border-width: 1px;border-color: #000;border-collapse: collapse; } 
+    table.tftable tr {background-color: #ffffff; } 
+    td,th{ text-align:center; font-size: 12px;border-width: 1px;padding:0;border-style: solid;border-color: #000;height: 36px;overflow: hidden;position: relative;}
+    .top{    display: flex;
     justify-content: center;
-    margin: 20px;}
-    .addBackground {
-        background-color: red;
-    }
+    margin: 20px;
+    align-items: center;}
+    .top button{    height: 26px;
+    color: #000;
+    background-color: #fff;
+    margin-left: 20px;
+    padding: 3px 15px;
+    border: none;
+    box-shadow: 1px 1px 4px;}
+    .top>input{    width: 75px;
+    height: 25px;
+    text-align: center;
+    font-size: 18px;}
+    td>input[type=checkbox]{    position: absolute;
+    right: 0;
+    top: 0;}
 
-    .rightclick {
-        display: none;
-        width: 100px;
-        height: 30px;
-        border-width: 1px 1px 0 1px;
-        border-style: solid;
-        border-color: black;
-        background-color: rgba(242, 242, 242, 0.6);
-        border-radius: 4px;
-        position: fixed;
-        left: 0;
-        top: 0;
-    }
-
-    .rightclick ul {
-        list-style: none;
-        cursor: pointer;
-
-    }
-
-    .rightclick ul li {
-        text-align: center;
-        font-family: "微软雅黑";
-        height: 30px;
-        line-height: 30px;
-        border-bottom: 1px solid #666;
-    }
-	#s{width: 100%; height: 300px;}
+    #menu{
+width: 125px; /*设置为0 隐藏自定义菜单*/ 
+overflow: hidden; /*隐藏溢出的元素*/
+box-shadow: 0 1px 1px #888,1px 0 1px #ccc;
+position: absolute; background-color: #fff;
+}
+.menu{
+width: 130px;
+height: 25px;
+line-height: 25px;
+padding: 0 10px;
+}
+#s{width: 100%; height: 300px;}
 </style>
-<!-- jQuery -->
-<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<!-- Bootstrap JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 <body>
-	<div class="container" id="app">
-		<div class="rightclick" id="rightclick">
-			<ul>
-				<li id="heBing">合并</li>
-			</ul>
-		</div>
-		<div class="top">
-		 <div class="col-5">
-			<div class="input-group">
-			  <span class="input-group-btn">
-				<button class="btn btn-default" type="button">行数:</button>
-			  </span>
-			  <input type="text" class="form-control rows" value='9' >
-			</div><!-- /input-group -->
-		  </div><!-- /.col-lg-6 --> 
-		  <div class="col-5">
-			<div class="input-group">
-			  <span class="input-group-btn">
-				<button class="btn btn-default" type="button">列数:</button>
-			  </span>
-			  <input type="text" class="form-control column" value='9' >
-			</div><!-- /input-group -->
-		  </div><!-- /.col-lg-6 --> 
-		  <div class="col-2">
-		  <input type="button" class="form-control" value="确定" id="button">
-		  </div>
-		</div> 
-		 
-		<div id='table' style="margin:0 auto;">
-<table id='tableContent' >
+    <div class="container">
+        <div id="app">
+            <div class="top">
+                <span>行数：</span><input v-model="rowCount" />
+                <span>列数：</span><input v-model="columnCount" />
+                <button @click="createTable">submit</button>
+            </div>
+            <div id="table">
+<table @click="menuShow=0" contenteditable="true"> 
+    <tr v-for="(v,k) in column" >
+        <td v-for="(vv,kk) in v" @click="column[k][kk].s=!vv.s" v-bind:rowspan="vv.r>1?vv.r:false" v-bind:colspan="vv.c>1?vv.c:false"  v-if="vv.r>0 && vv.c>0">{{k+1}}:{{kk+1}}<input type="checkbox" checked="true"  v-if="vv.s"  /></td> 
+    </tr>
+
 </table>
-		</div>
-	</div>
-	<div class="container" id="app">
-		<button id="showCode">Create&Copy</button>
-		<textarea id="s">
-		
-		</textarea>
-	</div>
+            </div>
+            <div class="foot"  >
+                <button @click="showCode">Create&Copy</button>
+                <textarea id="s" v-bind:value="content"> 
+                </textarea>
+            </div>
+            <div id="menu" v-show="menuShow">
+                <div class="menu" @click="merge">合并</div> 
+            </div>
+        </div> 
+    </div>
+    
 </body>
-<script type="text/javascript">
-	
-    document.getElementById('app').oncontextmenu = function (e) {
-        var ev = window.event || e;
-        if (document.all) {
-            ev.returnValue = false;    //ie阻止默认事件
-        } else {
-            ev.preventDefault();       //w3c阻止默认事件
-        }
-        var clientx = ev.clientX;
-        var clienty = ev.clientY;
-        var rightclick = document.getElementById("rightclick");
-        rightclick.style.display = "block";
-        rightclick.style.left = clientx + "px";
-        rightclick.style.top = clienty + "px";
-    }
-
-    document.body.onmousedown = function () {
-        document.getElementById("rightclick").style.display = "none";
-    };
-
-    document.getElementById("rightclick").onmousedown = function (e) {
-        var ev = window.event || e;
-        if (document.all) {
-            ev.cancelBubble = true;     // ie阻止事件流
-        } else {
-            ev.stopPropagation();      // w3c阻止事件流
-        }
-    };
-
-
-</script>
 <script>
-    topMostX = undefined;
-    topMostY = undefined;
-    buttomMostX = undefined;
-    buttomMostY = undefined;
-    num = 0
-    function processingData() {
-        topMostX = undefined;
-        topMostY = undefined;
-        buttomMostX = undefined;
-        buttomMostY = undefined;
-        num = $('.addBackground').length
-        $('.addBackground').each(function (i, e) {
-            var row = parseInt($('.addBackground').eq(i).data('row'))
-            var column = parseInt($('.addBackground').eq(i).data('column'))
-            if (topMostX == undefined) {
-                topMostX = row
-                topMostY = column
-                buttomMostX = row;
-                buttomMostY = column;
-            } else {
-                // 右小脚的坐标
-                if (buttomMostX < row) {
-                    buttomMostX = row;
-                    buttomMostY = column;
-                }
-                if ((buttomMostX == row) && (column > buttomMostY)) {
-                    buttomMostX = row;
-                    buttomMostY = column;
-                }
-
-                //左上角的坐标
-                if (topMostX > row) {
-                    topMostX = row
-                    topMostY = column
-                }
-                if ((topMostX == row) && (column < topMostY)) {
-                    topMostX = row
-                    topMostY = column
-                }
+    var Vue=new Vue({
+        el: '#app',
+        data:{  
+            column:[
+                [{'r':1,'c':1,'s':0},{'r':1,'c':1,'s':0},{'r':1,'c':1,'s':0},{'r':1,'c':1,'s':0},{'r':1,'c':1,'s':0}],
+                [{'r':1,'c':1,'s':0},{'r':1,'c':1,'s':0},{'r':1,'c':1,'s':0},{'r':1,'c':1,'s':0},{'r':1,'c':1,'s':0}],
+                [{'r':1,'c':1,'s':0},{'r':1,'c':1,'s':0},{'r':1,'c':1,'s':0},{'r':1,'c':1,'s':0},{'r':1,'c':1,'s':0}],
+                [{'r':1,'c':1,'s':0},{'r':1,'c':1,'s':0},{'r':1,'c':1,'s':0},{'r':1,'c':1,'s':0},{'r':1,'c':1,'s':0}],
+            ],
+            menuShow:false,
+            rowCount:7,
+            columnCount:9,
+            content:''
+        }, 
+        mounted:function(){
+            document.querySelector('table').oncontextmenu=function(e){
+                console.log(1);
+                e.preventDefault();
+                var menu=document.querySelector("#menu");
+                menu.style.left=e.clientX+'px';
+                menu.style.top=e.clientY+'px';
+                Vue.menuShow=1;
             }
-        })
-        
-    }
-$(function(){
-	$('#tableContent').attr('contenteditable',"true");
-    $('#button').click(function () {
-        var row = $('.rows').val()
-        var column = $('.column').val()
-        if (!row || !column || row == 0 || column == 0) {
-            alert('行或列不能为空')
-        }
-
-        var html = '';
-        $('#tableContent').html('')
-        for (rowIndex = 1; rowIndex <=row; rowIndex++) { //多少行
-            html += "\n\t<tr>"
-            for (let columnIndex = 1; columnIndex <= column; columnIndex++) {
-                html += "\n\t\t<td data-row=\"" + rowIndex + "\" data-column=\"" + columnIndex + "\" >行" + rowIndex + "-列" + columnIndex + "</td>";
-            }
-            html += "\n\t</tr>";
-        }
-        $('#tableContent').append(html)
-    })
-    //添加背景色
-    $("#table").on("click", "td", function () {
-        if ($(this).hasClass("addBackground")) {
-            $(this).removeClass('addBackground')
-        } else {
-            $(this).addClass('addBackground')
-        }
-        processingData()
-    })
-    //点击合并
-    $('#heBing').click(function () {
-        processingData()
-        if (buttomMostY == topMostY) {
-            num = buttomMostX - topMostX + 1;
-        }
-
-        if (buttomMostX == topMostX) {
-            num = buttomMostY - topMostY + 1;
-        }
-
-        if ((buttomMostX != topMostX) && (buttomMostY != topMostY)) {
-            num = ((buttomMostY - topMostY) + 1) * ((buttomMostX - topMostX) + 1)
-        }
-        if (parseInt($('.addBackground').length) != num) {
-            alert(num)
-
-            alert('合并单元格,格式不正确')
-            return
-        }
-
-        if (buttomMostY == topMostY) {
-            var num = buttomMostX - topMostX + 1
-            $('tr').eq(topMostX - 1).find('td').eq(topMostY - 1).attr('rowspan', num)
-            for (let index = topMostX + 1; index <= buttomMostX; index++) {
-                $('tr').eq(index - 1).find('td').last().remove()
-            }
-        }
-
-
-        if (buttomMostX == topMostX) {
-            var num = buttomMostY - topMostY + 1
-            $('tr').eq(topMostX - 1).find('td').eq(topMostY - 1).attr('colspan', num)
-            for (let index = topMostY + 1; index <= buttomMostY; index++) {
-                $('tr').eq(topMostX - 1).find('td').last().remove()
+        },
+        computed:{
+             
+        },
+        methods:{ 
+            clearSelect:function(){
+                for(let i=0;i<this.column.length;i++){
+                    for(let j=0;j<this.column[i].length;j++){
+                        this.column[i][j].s=0;
+                    }
+                }
+            },
+            createTable:function(){
+                var t= new Array();//[{'r':1,'c':1,'s':0},{'r':1,'c':1,'s':0},{'r':1,'c':1,'s':0},{'r':1,'c':1,'s':0},{'r':1,'c':1,'s':0}];  
+                for(var j=0;j<this.columnCount;j++){ 
+                    var tt=new Array();
+                    for(var i=0;i<this.rowCount;i++){ 
+                        tt.push({'r':1,'c':1,'s':0}); 
+                    }
+                    t.push(tt);
+                } 
+                this.column=t;
+            },
+            merge:function(){
+                var cc=this.column;
+                var rs=0,re=0,cs=0,ce=0;
+                for(let i=0;i<cc.length;i++){
+                    for(let j=0;j<cc[i].length;j++){
+                        if(cc[i][j].s){
+                            re=i+cc[i][j].r-1;
+                            ce=j+cc[i][j].c-1;
+                            if(rs==0 && cs==0){
+                                rs=i;
+                                cs=j;
+                            }
+                        }
+                    }
+                }
+                var tnum=0;
+                if(re<rs){
+                    tnum=rs;
+                    rs=re;
+                    re=tnum;
+                }
+                if(ce<cs){
+                    tnum=cs;
+                    cs=re;
+                    ce=tnum;
+                }
+                for(let i=0;i<cc.length;i++){
+                    for(let j=0;j<cc[i].length;j++){
+                        if(i==rs && j==cs){
+                            this.column[i][j].r=re-rs+1;
+                            this.column[i][j].c=ce-cs+1;
+                        }else if(i>=rs && i<=re && j>=cs && j<=ce){
+                            this.column[i][j].r=0;
+                            this.column[i][j].c=0;
+                        }
+                        
+                    }
+                }
+                this.clearSelect();
+                this.menuShow=false;
+            },
+            showCode:function(){ 
+                    var h=document.getElementById('table').innerHTML; 
+                    h=h.replace(/data-row=\"\d\"\sdata-column=\"\d\"/g,'');
+                    h=h.replace('contenteditable="true"',''); 
+                    h=h.replace('                    ','');
+                    h=h.replace(/<!---->/g,'');
+                    h=h.replace(/<tr>/g,"\n\t<tr>");
+                    h=h.replace(/<\/tr>/g,"\n\t</tr>");
+                    h=h.replace(/<td>/g,"\n\t\t<td>");
+                    h=h.replace(/<\/tbody>/g,"\n</tbody>");
+                    h=h.replace(/<\/table>/g,"\n</table>");
+                    this.content=h;
+                    console.log(h);
+                    var i= document.querySelector('#s'); 
+                    i.select();
+                    document.execCommand("copy");  
             }
         }
-
-        $('.addBackground').removeClass('addBackground') 
-    })
-	$('#showCode').click(function(){ 
-	    var h=$('#table').html(); 
-		h=h.replace(/data-row=\"\d\"\sdata-column=\"\d\"/g,'');
-		h=h.replace('id="tableContent" contenteditable="true"','');
-		$('#s').val(h); 
-		var i= document.querySelector('#s'); 
-		i.select();
-		document.execCommand("copy"); 
-	})
-})
+    }); 
+    
 </script>
-
 
 </html>

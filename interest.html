@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <title>计算利息</title>
+</head>
+<style> 
+    * {margin: 0; padding: 0;}
+    .container{width: 90%;max-width: 960px;margin: 0 auto;margin-top: 25px;}
+	 table{width: 100%;border-width: 1px;border-color: #000;border-collapse: collapse; } 
+    table.tftable tr {background-color: #ffffff; } 
+    td,th{ text-align:center; font-size: 12px;border-width: 1px;padding:0;border-style: solid;border-color: #000;height: 36px;overflow: hidden;}
+    td>input{width: 100%; height: 100%; border: none;padding: 2px 3px;text-align: center;}
+</style>
+<body>
+    <div class="container">
+        <div id="app">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="6">收益计算表</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <th width=10%>方案</th>
+                    <th width=15%>年化收益(%)</th>
+                    <th width=15%>存放天数</th>
+                    <th width=16%>金额</th>
+                    <th width=18%>所得利息</th>
+                    <th width=16%>操作</th>
+                </tr> 
+                <template v-for="(item,index) in ls" >  
+                    <tr>
+                        <td>{{index+1}}</td>
+                        <td><input v-model="item.year"/></td>
+                        <td><input v-model="item.day"/></td>
+                        <td><input v-model="item.total"/></td>
+                        <td>{{interest[index]}}</td>
+                        <td><button @click="del(index)">del</button></td>
+                    </tr>   
+                </template>   
+                <tr>
+                    <td colspan="6"><a @click="add" >+</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data:{  
+            ls:[
+                {year:5.1,day:30,total:10000}
+            ],  
+        },
+        computed:{
+            interest:function(){
+                var r=new Array(),l=this.ls;
+                for(let i=0;i<l.length;i++){
+                    r[i]=(l[i].year/365*l[i].total/100*l[i].day).toFixed(2);
+                }
+                return r;
+            }
+        },
+        methods:{
+            add:function(){
+               this.ls.push({year:3.8,day:30,total:10000}) ;  
+               this.s++;
+            },
+            del:function(index){
+                this.ls.splice(index,1);
+            }
+        }
+    }); 
+</script>
+
+</html>
